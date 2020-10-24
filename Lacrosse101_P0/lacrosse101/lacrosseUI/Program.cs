@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace lacrosse101
+namespace lacrosseUI
 {
     class Program
     {
