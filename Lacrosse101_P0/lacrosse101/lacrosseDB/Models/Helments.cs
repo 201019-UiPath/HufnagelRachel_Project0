@@ -1,4 +1,4 @@
-namespace lacrosseLib
+namespace lacrosseDB
 {
     public class Helments : Product
     {

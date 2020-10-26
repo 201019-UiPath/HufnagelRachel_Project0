@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace lacrosseLib
+namespace lacrosseDB
 {
     public class Customer : Human
     {

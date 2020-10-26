@@ -1,4 +1,5 @@
 ﻿using System;
+using lacrosseUI.Lacrosse101Menus;
 
 namespace lacrosseUI
 {
@@ -6,7 +7,12 @@ namespace lacrosseUI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Console.WriteLine("Hello World!");
+
+            IMenu menu = new LaunchMenu();
+            
+            menu.Start();
+
         }
     }
 }

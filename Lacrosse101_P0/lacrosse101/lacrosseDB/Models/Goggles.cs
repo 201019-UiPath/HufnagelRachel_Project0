@@ -1,6 +1,6 @@
-namespace lacrosseLib
+namespace lacrosseDB
 {
-    public class Goggles
+    public class Goggles : Product
     {
         public string Brand {get; set;}
         public string Color {get; set;}

@@ -1,4 +1,4 @@
-namespace lacrosseLib
+namespace lacrosseDB
 {
     public abstract class Human
     {
