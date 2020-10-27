@@ -1,5 +1,8 @@
 namespace lacrosseDB
 {
+    /// <summary>
+    /// Manager class which extends the abstract class humans 
+    /// </summary>
     public class Manager : Human 
     {
         public int TotalInventory {get; set;}

@@ -8,7 +8,9 @@ namespace lacrosseDB
         // same thing here need to make sure only select brands are aloud for input 
         // otherwise throw and excpetion 
         public string Brand {get; set;}
-
+        /// <summary>
+        /// default constructor for the product mens sticks 
+        /// </summary>
         public MSticks() {
             StickType = "";
             Brand = "";

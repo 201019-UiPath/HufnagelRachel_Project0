@@ -2,8 +2,14 @@ using System;
 
 namespace lacrosseUI.Lacrosse101Menus
 {
+    /// <summary>
+    /// this is the menu the shopper will see upon launching the store
+    /// </summary>
     public class LaunchMenu : IMenu
     {
+        /// <summary>
+        /// Here start() allows the shopper/employee to be directed to the correct domain of the shop
+        /// </summary>
         public void Start()
         {
             string shoperInput;

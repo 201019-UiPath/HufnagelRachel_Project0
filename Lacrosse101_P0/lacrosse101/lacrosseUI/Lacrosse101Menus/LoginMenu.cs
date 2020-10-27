@@ -2,8 +2,14 @@ using System;
 
 namespace lacrosseUI.Lacrosse101Menus
 {
+    /// <summary>
+    /// This is the log in menu for a returning shopper
+    /// </summary>
     public class LoginMenu : IMenu
     {
+        /// <summary>
+        /// Here start() asks for the returning shoppers email and password
+        /// </summary>
         public void Start()
         {
             string ShopperEmail;
@@ -14,6 +20,7 @@ namespace lacrosseUI.Lacrosse101Menus
             ShopperEmail = Console.ReadLine();
             Console.WriteLine("Please enter your password below: ");
             ShopperPassword = Console.ReadLine();
+            Environment.Exit(0);
         }
     }
 }
