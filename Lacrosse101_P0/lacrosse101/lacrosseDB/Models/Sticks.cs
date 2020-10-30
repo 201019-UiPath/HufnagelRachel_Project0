@@ -1,15 +1,16 @@
 namespace lacrosseDB.Models
 {
-    public class WSticks : Product
+    public class Sticks : Product
     {
-        // need to check input for aloud brands 
         public string Brand {get; set;}
+        public bool isMensStick {get; set;}
 
         /// <summary>
         /// default constructor for the product womens sticks
         /// </summary>
-        public WSticks() {
+        public Sticks() {
             Brand = "";
+            isMensStick = false;
         }
         
     }
