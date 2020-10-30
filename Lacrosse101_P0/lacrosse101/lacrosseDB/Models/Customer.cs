@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace lacrosseDB
+namespace lacrosseDB.Models
 {
     /// <summary>
     /// Customer class which extends the abstract class human

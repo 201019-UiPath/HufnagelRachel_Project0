@@ -1,4 +1,4 @@
-namespace lacrosseDB
+namespace lacrosseDB.Models
 {
     public class MSticks : Product
     {
