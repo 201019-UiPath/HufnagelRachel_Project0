@@ -1,24 +1,27 @@
+using System.Collections.Generic;
+
 namespace lacrosseDB.Models
 {
+    /// <summary>
+    /// The class locations that neither inherits or is extended by another class 
+    /// </summary>
     public class Locations
     {
-        #region Definitions
-        public int Id {get; set;}
-        public string StoreLocation {get; set;}
-        #endregion
+        /// <summary>
+        /// Property of the locations class
+        /// </summary>
+        /// <value></value>
+        public int Id { get; set; }
+        /// <summary>
+        /// Property of the locations class
+        /// </summary>
+        /// <value></value>
+        public string StoreLocation { get; set; }
+        /// <summary>
+        /// Property of the locations class
+        /// </summary>
+        /// <value></value>
+        public List<Inventory> inventory { get; set; }
 
-        #region Constructors
-        public Locations() {
-
-        }
-
-        public Locations(int Id, string StoreLocation) {
-            this.Id = Id; 
-            this.StoreLocation = StoreLocation;
-        }
-        #endregion
-        
     }
 }
-
-// might make this an abstract class but as of right now going to leave it 

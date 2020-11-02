@@ -1,33 +1,46 @@
+using System.Collections.Generic;
+
 namespace lacrosseDB.Models
 {
+    /// <summary>
+    /// The class orders which is neither inherited or extended by another class
+    /// </summary>
     public class Orders
     {
-        #region Definitions
-        // primary key for orders
-        public int Id {get; set;}
-        // this needs to be parsed into an int maybeeeee 
-        public string OrderNum {get; set;}
-        public int Quanity {get; set;}
-        public double TotalPrice {get; set;}
-        // the two foregin keys
-        public int LocationId {get; set;}
-        public int CustomersId {get; set;}
-        #endregion
-        #region Constructors
-        // default constructor 
-        public Orders() {
-            
-        }
-        // parameterized constructor
-        public Orders(int Id, string OrderNum, int Quanity, double TotalPrice, int LocationId, int CustomersId) {
-            this.Id = Id; 
-            this.OrderNum = OrderNum; 
-            this.Quanity = Quanity;
-            this.TotalPrice = TotalPrice; 
-            this.LocationId = LocationId;
-            this.CustomersId = CustomersId;
-
-        } 
-        #endregion
+        /// <summary>
+        /// Property of the orders class
+        /// </summary>
+        /// <value></value>
+        public int Id { get; set; }
+        /// <summary>
+        /// Property of the orders class
+        /// </summary>
+        /// <value></value>
+        public List<Product> ItemsToBuy { get; set; }
+        /// <summary>
+        /// Property of the orders class
+        /// </summary>
+        /// <value></value>
+        public double TotalPrice { get; set; }
+        /// <summary>
+        /// Property of the orders class
+        /// </summary>
+        /// <value></value>
+        public int LocationId { get; set; }
+        /// <summary>
+        /// Property of the orders class
+        /// </summary>
+        /// <value></value>
+        public Locations location { get; set; }
+        /// <summary>
+        /// Property of the orders class
+        /// </summary>
+        /// <value></value>
+        public int CustomersId { get; set; }
+        /// <summary>
+        /// Property of the orders class
+        /// </summary>
+        /// <value></value>
+        public Customer customer { get; set; }
     }
 }

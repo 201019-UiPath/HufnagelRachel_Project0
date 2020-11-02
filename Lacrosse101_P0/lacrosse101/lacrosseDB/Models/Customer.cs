@@ -1,15 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace lacrosseDB.Models
 {
     /// <summary>
-    /// Customer class which extends the abstract class human
+    /// The class customer which inherits from the abstract products human
     /// </summary>
     public class Customer : Human
-    {   
-        public string CustAddress {get; set;}
+    {
+        /// <summary>
+        /// Property of the customer class
+        /// </summary>
+        /// <value></value>
+        public string CustAddress { get; set; }
+        /// <summary>
+        /// Property of the customer class
+        /// </summary>
+        /// <value></value>
+        public List<Orders> orders { get; set; }
 
-        // maybe need to keep track of the order number? 
-        
+
     }
 }

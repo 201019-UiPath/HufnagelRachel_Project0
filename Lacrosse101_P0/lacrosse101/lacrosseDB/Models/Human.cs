@@ -1,26 +1,31 @@
 namespace lacrosseDB.Models
 {
+    /// <summary>
+    /// The abstract class Human which help implement the classes customer and manager
+    /// </summary>
     public abstract class Human
     {
-        #region Definitions
-        public int Id {get; set;} 
-        public string FirstName{get; set;}
-        public string LastName{get; set;}
-        public int LocationId {get; set;}
-        #endregion
+        /// <summary>
+        /// Property of the human class
+        /// </summary>
+        /// <value></value>
+        public int Id { get; set; }
+        /// <summary>
+        /// Property of the customer class
+        /// </summary>
+        /// <value></value>
+        public string FirstName { get; set; }
+        /// <summary>
+        /// Property of the customer class
+        /// </summary>
+        /// <value></value>
+        public string LastName { get; set; }
+        /// <summary>
+        /// Property of the customer class
+        /// </summary>
+        /// <value></value>
+        public int LocationId { get; set; }
 
-        #region Constructors 
-        public Human() {
-
-        }
-
-        public Human(int Id, string FirstName, string LastName, int LocationId) {
-            this.Id = Id; 
-            this.FirstName = FirstName; 
-            this.LastName = LastName; 
-            this.LocationId = LocationId;
-        }
-        #endregion
 
     }
 }

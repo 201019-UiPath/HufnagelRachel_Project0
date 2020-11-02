@@ -5,24 +5,61 @@ using System.IO;
 
 namespace lacrosseDB
 {
+    /// <summary>
+    /// The class that is responsible for connecting, updating the database 
+    /// </summary>
     public class lacrosseContext : DbContext
     {
         /// <summary>
-        /// the tables that will show up in pgadmin
+        /// A table in the database 
         /// </summary>
         /// <value></value>
-        public DbSet<Customer> products {get; set;}
-        public DbSet<Manager> managers {get; set;} 
-        public DbSet<Balls> balls {get; set;} 
-        public DbSet<Sticks> sticks {get; set;} 
-        public DbSet<Orders> orders {get; set;}
-        public DbSet<Locations> locations {get; set;}
+        public DbSet<Customer> Customer {get; set;}
+        /// <summary>
+        /// A table in the database 
+        /// </summary>
+        /// <value></value>
+        public DbSet<Manager> Managers {get; set;} 
+        /// <summary>
+        /// A table in the database 
+        /// </summary>
+        /// <value></value>
+        public DbSet<Balls> Balls {get; set;} 
+        /// <summary>
+        /// A table in the database 
+        /// </summary>
+        /// <value></value>
+        public DbSet<Sticks> Sticks {get; set;}
+        /// <summary>
+        /// A table in the database 
+        /// </summary>
+        /// <value></value>
+        public DbSet<Orders> Orders {get; set;}
+        /// <summary>
+        /// A table in the database 
+        /// </summary>
+        /// <value></value>
+        public DbSet<Locations> Locations {get; set;}
+        /// <summary>
+        /// A table in the database 
+        /// </summary>
+        /// <value></value>
+        public DbSet<Inventory> Inventory {get; set;}
+        /// <summary>
+        /// A table in the database 
+        /// </summary>
+        /// <value></value>
+        public DbSet<Cart> Cart {get; set;}
+        /// <summary>
+        /// A table in the database 
+        /// </summary>
+        /// <value></value>
+        public DbSet<CartItem> CartItem {get; set;}
 
         /// <summary>
         /// telling lacrosse context where the database is and then connecting to it 
         /// </summary>
         /// <param name="optionsBuilder"></param>
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
         {
             if (!optionsBuilder.IsConfigured)
@@ -49,6 +86,6 @@ namespace lacrosseDB
         //     .HasOne(o => o.Orders)
         //     .WithMany(orders => orders.OrderNum)
         //     .HasForeignKey(o => o.Id);
-        // }
+        //}
     }
 }
