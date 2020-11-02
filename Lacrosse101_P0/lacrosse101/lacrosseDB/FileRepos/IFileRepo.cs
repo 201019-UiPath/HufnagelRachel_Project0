@@ -1,13 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using lacrosseDB.Models;
-using lacrosseDB.Repos;
-using lacrosseDB.FileRepos;
 using System.Text.Json;
 using System;
 using System.IO;
 
-namespace lacrosseDB
+namespace lacrosseDB.FileRepos
 {
     public class IFileRepo : ICustomerRepo_2
     {

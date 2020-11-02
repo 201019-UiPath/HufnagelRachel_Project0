@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using lacrosseDB.Models;
-using lacrosseDB.Repos;
 
-namespace lacrosseDB
+namespace lacrosseDB.Repos
 {
     /// <summary>
     /// The class which implements all the interfaces for the CRUD operations on the database
