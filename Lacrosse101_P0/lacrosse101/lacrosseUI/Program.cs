@@ -1,4 +1,6 @@
 ﻿using System;
+using lacrosseDB;
+using lacrosseDB.Repos;
 using lacrosseUI.Lacrosse101Menus;
 
 namespace lacrosseUI
@@ -7,12 +9,9 @@ namespace lacrosseUI
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Hello World!");
-
-            IMenu menu = new LaunchMenu();
-            
+            lacrosseContext context = new lacrosseContext();
+            IMenu menu = new LaunchMenu(context, new DBRepo(context), new DBRepo(context), new DBRepo(context));
             menu.Start();
-
         }
     }
 }

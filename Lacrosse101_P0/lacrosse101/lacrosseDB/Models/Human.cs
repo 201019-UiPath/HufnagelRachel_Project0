@@ -10,16 +10,19 @@ namespace lacrosseDB.Models
         /// </summary>
         /// <value></value>
         public int Id { get; set; }
+
         /// <summary>
         /// Property of the customer class
         /// </summary>
         /// <value></value>
         public string FirstName { get; set; }
+
         /// <summary>
         /// Property of the customer class
         /// </summary>
         /// <value></value>
         public string LastName { get; set; }
+        
         /// <summary>
         /// Property of the customer class
         /// </summary>

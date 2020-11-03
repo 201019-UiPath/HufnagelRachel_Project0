@@ -10,6 +10,6 @@ namespace lacrosseDB.Repos
         void UpdateLocation(Locations location);
         Locations GetLocationByLocationId(int locationId);
         List<Locations> GetAllLocations();
-        void DeleteALocation(Locations locations);
+        void DeleteLocation(Locations locations);
     }
 }

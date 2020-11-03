@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\lacrosseDB\lacrosseDB.csproj" />
+    <ProjectReference Include="..\lacrosseLib\lacrosseLib.csproj" />
   </ItemGroup>
 
 </Project>

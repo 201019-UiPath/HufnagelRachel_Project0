@@ -13,7 +13,7 @@ namespace lacrosseLib
         {
             this.orderRepo = orderRepo;
         }
-        public void AddOrder(Order order)
+        public void AddOrder(Orders order)
         {
             orderRepo.AddOrder(order);
         }
@@ -26,7 +26,7 @@ namespace lacrosseLib
 
         public Orders GetOrderByOrderId(int orderId)
         {
-            Order order = orderRepo.GetOrderByOrderId(orderId);
+            Orders order = orderRepo.GetOrderByOrderId(orderId);
             return order;
         }
 
@@ -58,7 +58,11 @@ namespace lacrosseLib
             orderRepo.DeleteOrder(order);
         }
 
-        // need to add the methods for sorted order lists from P0 requirements
+        // List<Orders> GetAllOrdersByCustIdDateAsc(int custId);
+        // List<Orders> GettAllOrdersByCustIdDateDesc(int custId);
+        // List<Orders> GetAllOrdersByCustIdPriceAsc(int custId);
+        // List<Orders> GetAllOrdersByCustIdPriceDesc(int custId);
+        // Orders GetOrderByData(DateTime dateTime);
 
 
     }

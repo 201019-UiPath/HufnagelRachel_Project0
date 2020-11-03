@@ -19,33 +19,54 @@ namespace lacrosseDB.Migrations
                 .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("lacrosseDB.Models.Balls", b =>
+            modelBuilder.Entity("lacrosseDB.Models.Cart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<float>("Price")
-                        .HasColumnType("real");
-
-                    b.Property<string>("ProdName")
-                        .HasColumnType("text");
-
-                    b.Property<int>("colorType")
+                    b.Property<int>("custId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("locationId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("locationsId")
+                    b.Property<int?>("customerId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("locationsId");
+                    b.HasIndex("customerId");
 
-                    b.ToTable("Balls");
+                    b.ToTable("Cart");
+                });
+
+            modelBuilder.Entity("lacrosseDB.Models.CartItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("ballId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("cartId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("stickId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ballId");
+
+                    b.HasIndex("cartId");
+
+                    b.HasIndex("stickId");
+
+                    b.ToTable("CartItem");
                 });
 
             modelBuilder.Entity("lacrosseDB.Models.Customer", b =>
@@ -147,37 +168,40 @@ namespace lacrosseDB.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("integer");
-
                     b.Property<int>("CustomersId")
                         .HasColumnType("integer");
 
                     b.Property<int>("LocationId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("OrderNum")
-                        .HasColumnType("text");
-
-                    b.Property<int>("Quanity")
-                        .HasColumnType("integer");
-
                     b.Property<double>("TotalPrice")
                         .HasColumnType("double precision");
 
+                    b.Property<int?>("customerId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("LocationId");
+
+                    b.HasIndex("customerId");
 
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("lacrosseDB.Models.Sticks", b =>
+            modelBuilder.Entity("lacrosseDB.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int?>("OrdersId")
+                        .HasColumnType("integer");
 
                     b.Property<float>("Price")
                         .HasColumnType("real");
@@ -185,27 +209,78 @@ namespace lacrosseDB.Migrations
                     b.Property<string>("ProdName")
                         .HasColumnType("text");
 
-                    b.Property<int>("brandType")
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrdersId");
+
+                    b.ToTable("Product");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Product");
+                });
+
+            modelBuilder.Entity("lacrosseDB.Models.Balls", b =>
+                {
+                    b.HasBaseType("lacrosseDB.Models.Product");
+
+                    b.Property<int>("colorType")
                         .HasColumnType("integer");
 
                     b.Property<int>("locationId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("locationsId")
+                        .HasColumnType("integer");
+
+                    b.HasIndex("locationsId");
+
+                    b.HasDiscriminator().HasValue("Balls");
+                });
+
+            modelBuilder.Entity("lacrosseDB.Models.Sticks", b =>
+                {
+                    b.HasBaseType("lacrosseDB.Models.Product");
+
+                    b.Property<int>("brandType")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("locationId")
+                        .HasColumnName("Sticks_locationId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("stickType")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
-
                     b.HasIndex("locationId");
 
-                    b.ToTable("Sticks");
+                    b.HasDiscriminator().HasValue("Sticks");
                 });
 
-            modelBuilder.Entity("lacrosseDB.Models.Balls", b =>
+            modelBuilder.Entity("lacrosseDB.Models.Cart", b =>
                 {
-                    b.HasOne("lacrosseDB.Models.Locations", "locations")
+                    b.HasOne("lacrosseDB.Models.Customer", "customer")
                         .WithMany()
-                        .HasForeignKey("locationsId");
+                        .HasForeignKey("customerId");
+                });
+
+            modelBuilder.Entity("lacrosseDB.Models.CartItem", b =>
+                {
+                    b.HasOne("lacrosseDB.Models.Balls", "ball")
+                        .WithMany()
+                        .HasForeignKey("ballId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("lacrosseDB.Models.Cart", "cart")
+                        .WithMany("cartItem")
+                        .HasForeignKey("cartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("lacrosseDB.Models.Sticks", "stick")
+                        .WithMany()
+                        .HasForeignKey("stickId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("lacrosseDB.Models.Inventory", b =>
@@ -240,9 +315,29 @@ namespace lacrosseDB.Migrations
 
             modelBuilder.Entity("lacrosseDB.Models.Orders", b =>
                 {
-                    b.HasOne("lacrosseDB.Models.Customer", null)
+                    b.HasOne("lacrosseDB.Models.Locations", "location")
+                        .WithMany()
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("lacrosseDB.Models.Customer", "customer")
                         .WithMany("orders")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("customerId");
+                });
+
+            modelBuilder.Entity("lacrosseDB.Models.Product", b =>
+                {
+                    b.HasOne("lacrosseDB.Models.Orders", null)
+                        .WithMany("ItemsToBuy")
+                        .HasForeignKey("OrdersId");
+                });
+
+            modelBuilder.Entity("lacrosseDB.Models.Balls", b =>
+                {
+                    b.HasOne("lacrosseDB.Models.Locations", "locations")
+                        .WithMany()
+                        .HasForeignKey("locationsId");
                 });
 
             modelBuilder.Entity("lacrosseDB.Models.Sticks", b =>

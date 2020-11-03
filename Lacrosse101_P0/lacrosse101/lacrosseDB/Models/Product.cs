@@ -10,11 +10,13 @@ namespace lacrosseDB.Models
         /// </summary>
         /// <value></value>
         public int Id {get; set;}
+
         /// <summary>
         /// Property of the product class
         /// </summary>
         /// <value></value>
         public string ProdName {get; set;}
+        
         /// <summary>
         /// Property of the product class
         /// </summary>

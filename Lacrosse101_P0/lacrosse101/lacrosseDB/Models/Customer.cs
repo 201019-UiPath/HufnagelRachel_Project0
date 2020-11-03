@@ -10,9 +10,10 @@ namespace lacrosseDB.Models
     {
         /// <summary>
         /// Property of the customer class
-        /// </summary>
+        /// </summary> 
         /// <value></value>
         public string CustAddress { get; set; }
+
         /// <summary>
         /// Property of the customer class
         /// </summary>

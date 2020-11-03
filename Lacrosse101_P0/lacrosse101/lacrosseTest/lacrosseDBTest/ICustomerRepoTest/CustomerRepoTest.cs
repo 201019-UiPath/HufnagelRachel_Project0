@@ -1,4 +1,7 @@
 using System;
+using lacrosseDB;
+using lacrosseDB.Models;
+using lacrosseDB.Repos;
 using Xunit;
 
 namespace ICustomerRepoTest
@@ -6,9 +9,10 @@ namespace ICustomerRepoTest
     public class CustomerRepoTest
     {
         [Fact]
-        public void Test1()
+        public void UpdateUserShouldUpdate() 
         {
-            // testing the add customer method here
+           using var tester = new lacrosseContext();
+          // tester.CustAddress = "Test.Name";
         }
     }
 }

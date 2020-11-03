@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace lacrosseDB.Models
@@ -12,35 +13,47 @@ namespace lacrosseDB.Models
         /// </summary>
         /// <value></value>
         public int Id { get; set; }
+
         /// <summary>
         /// Property of the orders class
         /// </summary>
         /// <value></value>
         public List<Product> ItemsToBuy { get; set; }
+
         /// <summary>
         /// Property of the orders class
         /// </summary>
         /// <value></value>
         public double TotalPrice { get; set; }
+
         /// <summary>
         /// Property of the orders class
         /// </summary>
         /// <value></value>
         public int LocationId { get; set; }
+
         /// <summary>
         /// Property of the orders class
         /// </summary>
         /// <value></value>
         public Locations location { get; set; }
+
         /// <summary>
         /// Property of the orders class
         /// </summary>
         /// <value></value>
         public int CustomersId { get; set; }
+
         /// <summary>
         /// Property of the orders class
         /// </summary>
         /// <value></value>
         public Customer customer { get; set; }
+        
+        /// <summary>
+        /// Property of the orders class
+        /// </summary>
+        /// <value></value>
+        public DateTime dateOfOrder { get; set; }
     }
 }

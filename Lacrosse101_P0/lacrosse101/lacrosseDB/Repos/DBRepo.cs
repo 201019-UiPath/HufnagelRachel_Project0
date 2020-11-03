@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using lacrosseDB.Models;
@@ -92,7 +93,7 @@ namespace lacrosseDB.Repos
         /// A method are for deleting data from the database
         /// </summary>
         /// <param name="ball"></param>
-        public void DeleteABall(Balls ball)
+        public void DeleteBall(Balls ball)
         {
             context.Balls.Remove(ball);
             context.SaveChanges();
@@ -110,7 +111,7 @@ namespace lacrosseDB.Repos
         /// A method are for deleting data from the database
         /// </summary>
         /// <param name="location"></param>
-        public void DeleteALocation(Locations location)
+        public void DeleteLocation(Locations location)
         {
             context.Locations.Remove(location);
             context.SaveChanges();
@@ -119,7 +120,7 @@ namespace lacrosseDB.Repos
         /// A method are for deleting data from the database
         /// </summary>
         /// <param name="manager"></param>
-        public void DeleteAManager(Manager manager)
+        public void DeleteManager(Manager manager)
         {
             context.Managers.Remove(manager);
             context.SaveChanges();
@@ -128,7 +129,7 @@ namespace lacrosseDB.Repos
         /// A method are for deleting data from the database
         /// </summary>
         /// <param name="order"></param>
-        public void DeleteAOrder(Orders order)
+        public void DeleteOrder(Orders order)
         {
             context.Orders.Remove(order);
             context.SaveChanges();
@@ -137,7 +138,7 @@ namespace lacrosseDB.Repos
         /// A method are for deleting data from the database
         /// </summary>
         /// <param name="stick"></param>
-        public void DeleteAStick(Sticks stick)
+        public void DeleteStick(Sticks stick)
         {
             context.Sticks.Remove(stick);
             context.SaveChanges();
@@ -370,7 +371,7 @@ namespace lacrosseDB.Repos
         /// A method are for updating data from the database
         /// </summary>
         /// <param name="customer"></param>
-        public void UpdateCutomer(Customer customer)
+        public void UpdateCustomer(Customer customer)
         {
             context.Customer.Update(customer);
             context.SaveChanges();
@@ -406,7 +407,7 @@ namespace lacrosseDB.Repos
         /// A method are for updating data from the database
         /// </summary>
         /// <param name="order"></param>
-        public void UpdateOrders(Orders order)
+        public void UpdateOrder(Orders order)
         {
             context.Orders.Update(order);
             context.SaveChanges();
@@ -523,6 +524,56 @@ namespace lacrosseDB.Repos
         {
             context.CartItem.Remove(cartItem);
             context.SaveChanges();
+        }
+
+        /// <summary>
+        /// Sort the orders by date for a specific customer asc
+        /// </summary>
+        /// <param name="custId"></param>
+        /// <returns></returns>
+        List<Orders> IOrderRepo.GetAllOrdersByCustIdDateAsc(int custId)
+        {
+            return context.Orders.Where(x => x.CustomersId == custId).OrderBy(x => x.dateOfOrder).ToList();
+        }
+
+        /// <summary>
+        /// Sort the orders by date for a specific customer desc
+        /// </summary>
+        /// <param name="custId"></param>
+        /// <returns></returns>
+        List<Orders> IOrderRepo.GettAllOrdersByCustIdDateDesc(int custId)
+        {
+            return context.Orders.Where(x => x.CustomersId == custId).OrderByDescending(x => x.dateOfOrder).ToList();
+        }
+
+        /// <summary>
+        /// Sort the orders by price for a specific customer
+        /// </summary>
+        /// <param name="custId"></param>
+        /// <returns></returns>
+        List<Orders> IOrderRepo.GetAllOrdersByCustIdPriceAsc(int custId)
+        {
+            return context.Orders.Where(x => x.CustomersId == custId).OrderBy(x => x.TotalPrice).ToList();
+        }
+
+        /// <summary>
+        /// Sort the orders by price for a specific customer
+        /// </summary>
+        /// <param name="custId"></param>
+        /// <returns></returns>
+        List<Orders> IOrderRepo.GetAllOrdersByCustIdPriceDesc(int custId)
+        {
+            return context.Orders.Where(x => x.CustomersId == custId).OrderByDescending(x => x.TotalPrice).ToList();
+        }
+
+        /// <summary>
+        /// Sort the orders by price for a specific customer
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
+        Orders IOrderRepo.GetOrderByData(DateTime dateTime)
+        {
+            return (Orders) context.Orders.Single(x => x.dateOfOrder == dateTime);
         }
     }
 }

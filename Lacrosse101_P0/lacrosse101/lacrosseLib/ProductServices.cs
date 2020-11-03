@@ -36,13 +36,13 @@ namespace lacrosseLib
             prodRepo.UpdateStick(stick);
         }
 
-        public void GetBallByBallId(int ballId)
+        public Balls GetBallByBallId(int ballId)
         {
             Balls ball = prodRepo.GetBallByBallId(ballId);
             return ball;
         }
 
-        public void GetStickByStickId(int stickId)
+        public Sticks GetStickByStickId(int stickId)
         {
             Sticks stick = prodRepo.GetStickByStickId(stickId);
             return stick;

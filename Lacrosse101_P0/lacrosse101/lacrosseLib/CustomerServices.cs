@@ -44,7 +44,7 @@ namespace lacrosseLib
 
         public void DeleteCustomer(Customer customer)
         {
-            custRepo.DeleteCustomer(customer);
+            custRepo.DeleteACustomer(customer);
         }
     }
 }

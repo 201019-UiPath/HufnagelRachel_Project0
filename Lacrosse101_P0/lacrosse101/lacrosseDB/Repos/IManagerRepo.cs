@@ -10,6 +10,6 @@ namespace lacrosseDB.Repos
         Manager GetManagerByManId (int manId);
         Manager GetManagerByName (string firstName, string lastName);
         List <Manager> GetAllManagers();
-        void DeleteAManager (Manager manager);
+        void DeleteManager (Manager manager);
     }
 } 

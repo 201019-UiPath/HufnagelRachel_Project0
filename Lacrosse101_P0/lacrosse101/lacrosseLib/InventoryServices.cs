@@ -15,7 +15,7 @@ namespace lacrosseLib
 
         public void AddInventory(Inventory inventory) 
         {
-            inventRepo.AddInventory(inventory);
+            inventRepo.AddToInventory(inventory); 
         }
 
         public void UpdateInventory(Inventory inventory) 
