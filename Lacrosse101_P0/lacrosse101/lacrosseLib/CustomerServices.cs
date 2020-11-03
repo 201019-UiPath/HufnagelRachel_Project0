@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using lacrosseDB;
 using lacrosseDB.Repos;
 using lacrosseDB.Models;
 
@@ -35,7 +34,7 @@ namespace lacrosseLib
             Customer customer = custRepo.GetCustomerByName(firstName, lastName);
             return customer;
         }
-
+ 
         public List<Customer> GetAllCustomers()
         {
             List<Customer> customers = custRepo.GetAllCustomers();

@@ -14,11 +14,11 @@ namespace lacrosseDB.Repos
         List<Orders> GetAllOrdersByCustId(int custId);
         List<Orders> GetAllOrdersByLocationId (int locationId);
         void DeleteOrder(Orders order);
-        
+
         List<Orders> GetAllOrdersByCustIdDateAsc(int custId);
         List<Orders> GettAllOrdersByCustIdDateDesc(int custId);
         List<Orders> GetAllOrdersByCustIdPriceAsc(int custId);
         List<Orders> GetAllOrdersByCustIdPriceDesc(int custId);
-        Orders GetOrderByData(DateTime dateTime);
+        Orders GetOrderByDate(DateTime dateTime);
     }
 }

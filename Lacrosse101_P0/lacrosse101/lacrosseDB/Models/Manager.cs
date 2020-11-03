@@ -10,6 +10,7 @@ namespace lacrosseDB.Models
         /// </summary>
         /// <value></value>
         public Locations location {get; set;}
+    
         
         
     }

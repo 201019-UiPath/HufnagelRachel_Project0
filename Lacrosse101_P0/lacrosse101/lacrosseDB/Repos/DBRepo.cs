@@ -264,7 +264,7 @@ namespace lacrosseDB.Repos
         /// <returns></returns>
         public Customer GetCustomerByName(string firstName, string lastName)
         {
-            return (Customer)context.Customer.Where(c => c.FirstName == firstName && c.LastName == lastName);
+            return (Customer) context.Customer.Where(c => c.FirstName == firstName & c.LastName == lastName);
         }
         /// <summary>
         /// A method are for retreving data from the database
@@ -273,7 +273,7 @@ namespace lacrosseDB.Repos
         /// <returns></returns>
         public Inventory GetInventoryItemByInventoryId(int intentoryId)
         {
-            return (Inventory)context.Inventory.Single(i => i.Id == intentoryId);
+            return (Inventory) context.Inventory.Single(i => i.Id == intentoryId);
         }
         /// <summary>
         /// A method are for retreving data from the database
@@ -282,7 +282,7 @@ namespace lacrosseDB.Repos
         /// <returns></returns>
         public Inventory GetInventoryItemByLocationId(int locationId)
         {
-            return (Inventory)context.Inventory.Single(i => i.locationId == locationId);
+            return (Inventory) context.Inventory.Single(i => i.locationId == locationId);
         }
         /// <summary>
         /// A method are for retreving data from the database
@@ -567,13 +567,18 @@ namespace lacrosseDB.Repos
         }
 
         /// <summary>
-        /// Sort the orders by price for a specific customer
+        /// Get a orders by date
         /// </summary>
         /// <param name="dateTime"></param>
         /// <returns></returns>
-        Orders IOrderRepo.GetOrderByData(DateTime dateTime)
+        Orders IOrderRepo.GetOrderByDate(DateTime dateTime)
         {
             return (Orders) context.Orders.Single(x => x.dateOfOrder == dateTime);
+        }
+
+        Manager IManagerRepo.GetManagerByLocationId(int locID)
+        {
+            return (Manager) context.Managers.Single(m => m.LocationId == locID);
         }
     }
 }

@@ -2,6 +2,7 @@ using lacrosseDB;
 using lacrosseDB.Repos;
 using lacrosseDB.Models;
 using System.Collections.Generic;
+using System;
 
 namespace lacrosseLib
 {
@@ -58,11 +59,31 @@ namespace lacrosseLib
             orderRepo.DeleteOrder(order);
         }
 
-        // List<Orders> GetAllOrdersByCustIdDateAsc(int custId);
-        // List<Orders> GettAllOrdersByCustIdDateDesc(int custId);
-        // List<Orders> GetAllOrdersByCustIdPriceAsc(int custId);
-        // List<Orders> GetAllOrdersByCustIdPriceDesc(int custId);
-        // Orders GetOrderByData(DateTime dateTime);
+        public List<Orders> GetAllOrdersByCustIdDateAsc(int custId)
+        {
+            List<Orders> orders = orderRepo.GetAllOrdersByCustIdDateAsc(custId);
+            return orders;
+        }
+        public List<Orders> GettAllOrdersByCustIdDateDesc(int custId)
+        {
+            List<Orders> orders = orderRepo.GettAllOrdersByCustIdDateDesc(custId);
+            return orders;
+        }
+        public List<Orders> GetAllOrdersByCustIdPriceAsc(int custId)
+        {
+            List<Orders> orders = orderRepo.GetAllOrdersByCustIdPriceAsc(custId);
+            return orders;
+        }
+        public List<Orders> GetAllOrdersByCustIdPriceDesc(int custId)
+        {
+            List<Orders> orders = orderRepo.GetAllOrdersByCustIdPriceDesc(custId);
+            return orders;
+        }
+        public Orders GetOrderByDate(DateTime dateTime)
+        {
+            Orders order = orderRepo.GetOrderByDate(dateTime);
+            return order;
+        }
 
 
     }

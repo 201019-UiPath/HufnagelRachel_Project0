@@ -47,5 +47,11 @@ namespace lacrosseLib
             managerRepo.DeleteManager(manager);
         }
 
+        public Manager GetManagerByLocationId(int locID)
+        {
+            Manager manAtLoc = managerRepo.GetManagerByLocationId(locID);
+            return manAtLoc;
+        }
+
     }
 }

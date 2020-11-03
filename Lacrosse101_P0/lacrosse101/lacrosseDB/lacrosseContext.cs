@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using lacrosseDB.Models;
 using Microsoft.Extensions.Configuration;
 using System.IO;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace lacrosseDB
 {
@@ -74,18 +75,27 @@ namespace lacrosseDB
             }
         }
 
-        // will need this method for the inventory table 
-        // protected override void OnModelCreating(ModelBuilder modelBuilder)
-        // {
-        //     modelBuilder.Entity<Inventory>() 
-        //     .HasOne(p => p.Product)
-        //     .WithMany(products => products.ProdName)
-        //     .HasForeignKey(p => p.Id);
+        /// <summary>
+        /// helping to get rid of the one to many relationships
+        /// </summary>
+        /// <param name="modelBuilder"></param>
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            var StickConverter1 = new EnumToStringConverter<Sticks.BrandType>();
+            var StickConverter2 = new EnumToStringConverter<Sticks.StickType>();
+            var BallConverter = new EnumToStringConverter<Balls.ColorType>();
 
-        //     modelBuilder.Entity<Inventory>() 
-        //     .HasOne(o => o.Orders)
-        //     .WithMany(orders => orders.OrderNum)
-        //     .HasForeignKey(o => o.Id);
-        //}
+            modelBuilder.Entity<Sticks>() 
+            .Property(s => s.brandType)
+            .HasConversion(StickConverter1);
+
+            modelBuilder.Entity<Sticks>()
+            .Property(s => s.stickType)
+            .HasConversion(StickConverter2);
+
+            modelBuilder.Entity<Balls>() 
+            .Property(b => b.colorType)
+            .HasConversion(BallConverter);
+        }
     }
 }
