@@ -42,7 +42,7 @@ namespace lacrosseUI.Lacrosse101Menus
                 Console.WriteLine("Welcome manager, follow the steps below to replenish the stock.");
 
                 Console.WriteLine("Select a location to replenish inventory at:");
-                Console.WriteLine("[0] Exit \n[1] Location 1 \n[2] Location 2 \n[3] Location 3");
+                Console.WriteLine("[0] Exit \n[2] Location 1 \n[4] Location 2 \n[6] Location 3");
 
                 manInput = Console.ReadLine();
                 switch (manInput)
