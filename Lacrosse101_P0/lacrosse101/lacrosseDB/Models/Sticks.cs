@@ -31,6 +31,13 @@ namespace lacrosseDB.Models
         public Locations location {get; set;}
 
         /// <summary>
+        /// Property of the sticks class
+        /// </summary>
+        /// <value></value>
+        public int quantity {get; set;}
+
+
+        /// <summary>
         /// Enum for a property of brand type for the sticks class
         /// </summary>
         public enum BrandType {

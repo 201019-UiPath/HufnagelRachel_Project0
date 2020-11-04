@@ -35,6 +35,12 @@ namespace lacrosseLib
             return cartItem;
         }
 
+        public CartItem GetCartItemByCustId(int custId) 
+        {
+            CartItem cartItem = repo.GetCartItemByCustId(custId);
+            return cartItem;
+        }
+
         public List<CartItem> GetAllCartItemsByCartId(int cartId)
         {
             List<CartItem> cartItems = repo.GetAllCartItemsByCartId(cartId);

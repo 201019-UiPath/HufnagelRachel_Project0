@@ -20,7 +20,8 @@ namespace lacrosseDB.Models
         /// Proterty of the cart class
         /// </summary>
         /// <value></value>
-        public Customer customer {get; set;} 
+        public Customer customer {get; set;}
+
 
         /// <summary>
         /// Property of the cart class

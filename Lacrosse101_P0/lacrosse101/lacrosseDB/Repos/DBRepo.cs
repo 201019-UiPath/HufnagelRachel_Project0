@@ -516,6 +516,17 @@ namespace lacrosseDB.Repos
             List<CartItem> cartItems = context.CartItem.Where(ci => ci.cartId == cartId).ToList();
             return cartItems;
         }
+
+        /// <summary>
+        /// A method for retreving data from the database 
+        /// </summary>
+        /// <param name="custId"></param>
+        /// <returns></returns>
+        public CartItem GetCartItemByCustId(int custId)
+        {
+            CartItem cartItem = context.CartItem.Single(ci => ci.custId == custId);
+            return cartItem;
+        }
         /// <summary>
         /// A method for deleting data from the database 
         /// </summary>

@@ -34,6 +34,8 @@ namespace lacrosseTest
             Assert.NotNull(tester.Customer.Single(c => c.FirstName == newCust.FirstName && c.LastName == newCust.LastName));
             custRepo.DeleteACustomer(newCust);
         }
+
+        public void UpdateCustomerShouldUpdateCustomer
     }
 }
  

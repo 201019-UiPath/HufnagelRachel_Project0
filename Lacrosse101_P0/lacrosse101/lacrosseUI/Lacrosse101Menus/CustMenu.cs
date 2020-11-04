@@ -1,6 +1,7 @@
 using lacrosseDB;
 using lacrosseDB.Models;
 using lacrosseDB.Repos;
+using lacrosseLib;
 using System;
 
 namespace lacrosseUI.Lacrosse101Menus
@@ -10,18 +11,45 @@ namespace lacrosseUI.Lacrosse101Menus
         private string custInpt;
         private Customer customer;
         private OrderHistoryMenu orderHistoryMenu;
-        //products menu and cart menu to add
+        private ProductDetails productDetails;
 
         public CustMenu(Customer customer, lacrosseContext context)
         {
             this.customer = customer;
-            this.orderHistoryMenu = new OrderHistoryMenu(customer, context, new DBRepo(context),new DBRepo(context), new DBRepo(context), new DBRepo(context), new DBRepo(context));
+            this.orderHistoryMenu = new OrderHistoryMenu(customer, context, new DBRepo(context), new DBRepo(context), new DBRepo(context), new DBRepo(context), new DBRepo(context));
+            this.productDetails = new ProductDetails(customer, context, new DBRepo(context), new DBRepo(context), new DBRepo(context), new DBRepo(context), new DBRepo(context));
+
         }
 
         public void Start()
         {
-            Console.WriteLine("Please select one of the options below: ");
-            Console.WriteLine("[0] Exit \n[2] View Order History \n[4] View Products \n[6] View Cart");
+            do
+            {
+                Console.WriteLine("Please select one of the options below: ");
+                Console.WriteLine("[0] Exit \n[2] View Order History \n[4] Browse Products \n[6] View Cart");
+                switch (custInpt)
+                {
+                    case "0":
+                        break;
+
+                    case "2":
+                        orderHistoryMenu.Start();
+                        break;
+
+                    case "4":
+                        productDetails.Start();
+                        break;
+
+                    case "6":
+                        //cart menu
+                        break;
+
+                    default:
+                        ValidInvalidServices.InvalidInput();
+                        break;
+
+                }
+            } while (!(custInpt.Equals("0")));
         }
     }
 }

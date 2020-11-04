@@ -49,5 +49,11 @@ namespace lacrosseDB.Models
         /// </summary>
         /// <value></value>
         public int quantity {get; set;} 
+
+        /// <summary>
+        /// Proterty of the cart item class
+        /// </summary>
+        /// <value></value>
+        public int custId {get; set;}
     }
 }
