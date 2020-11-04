@@ -12,13 +12,14 @@ namespace lacrosseUI.Lacrosse101Menus
         private Customer customer;
         private OrderHistoryMenu orderHistoryMenu;
         private ProductDetails productDetails;
+        private CheckoutMenu checkout;
 
         public CustMenu(Customer customer, lacrosseContext context)
         {
             this.customer = customer;
             this.orderHistoryMenu = new OrderHistoryMenu(customer, context, new DBRepo(context), new DBRepo(context), new DBRepo(context), new DBRepo(context), new DBRepo(context));
             this.productDetails = new ProductDetails(customer, context, new DBRepo(context), new DBRepo(context), new DBRepo(context), new DBRepo(context), new DBRepo(context));
-
+            this.checkout = new CheckoutMenu(customer, context,new DBRepo(context), new DBRepo(context), new DBRepo(context), new DBRepo(context),new DBRepo(context), new DBRepo(context), new DBRepo(context));
         }
 
         public void Start()
@@ -41,7 +42,7 @@ namespace lacrosseUI.Lacrosse101Menus
                         break;
 
                     case "6":
-                        //cart menu
+                        checkout.Start();
                         break;
 
                     default:
