@@ -96,6 +96,7 @@ namespace lacrosseUI.Lacrosse101Menus
                 {
                     customer = cust;
                     Log.Information($"{cust.email} has signed in");
+                    CustMenu custMenu = new CustMenu(customer, context);
                     try
                     {
                         cartServices.DeleteCart(cartServices.GetCartByCustId(customer.Id));
@@ -106,7 +107,6 @@ namespace lacrosseUI.Lacrosse101Menus
                         Cart newCart = new Cart();
                         newCart.custId = customer.Id;
                         cartServices.AddCart(newCart);
-                        custMenu = new CustMenu(customer, context);
                         custMenu.Start();
                     }
                 }

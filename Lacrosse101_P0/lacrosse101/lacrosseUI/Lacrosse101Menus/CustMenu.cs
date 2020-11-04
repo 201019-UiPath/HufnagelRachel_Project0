@@ -28,6 +28,7 @@ namespace lacrosseUI.Lacrosse101Menus
             {
                 Console.WriteLine("Please select one of the options below: ");
                 Console.WriteLine("[0] Exit \n[2] View Order History \n[4] Browse Products \n[6] View Cart");
+                custInpt = Console.ReadLine();
                 switch (custInpt)
                 {
                     case "0":

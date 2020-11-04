@@ -76,13 +76,13 @@ namespace lacrosseUI.Lacrosse101Menus
             {
                 Console.WriteLine("Which ball item would you like to update?");
                 List<Inventory> items = inventoryServices.GetAllOfInventoryByLocationId(locationId);
-                Console.WriteLine("[0] Back");
                 foreach (Inventory item in items)
                 {
                     Balls balls = productServices.GetBallByBallId(item.ballId);
                     Console.WriteLine($"[{balls.Id}]: Ball Color: {balls.colorType} ${balls.Price} Remaining in inventory: {item.quantityOfBalls}");
                 }
                 manInput2 = Console.ReadLine();
+                Console.WriteLine("[0] Back");
                 switch (manInput2)
                 {
                     case "1":
