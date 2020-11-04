@@ -20,7 +20,7 @@ namespace lacrosseUI.Lacrosse101Menus
         private CustomerServices custServices;
         private ILocationRepo locRepo;
         private LocationServices locServices;
-        //private menu to edit the inventory
+        private ReplenishInventory replenishInventory;
 
         public ManagerLogin(Manager manager, lacrosseContext context, ICustomerRepo custRepo, ILocationRepo locRepo)
         {
@@ -29,22 +29,21 @@ namespace lacrosseUI.Lacrosse101Menus
             this.locRepo = locRepo;
             this.custServices = new CustomerServices(custRepo);
             this.locServices = new LocationServices(locRepo);
-
-            // declare a edit inventory menu here
+            this.replenishInventory = new ReplenishInventory(manager, context, new DBRepo(context), new DBRepo(context), new DBRepo(context));
         }
 
         public void Start()
         {
             do
             {
-                System.Console.WriteLine("Welcome Manager, please select an option below: ");
+                System.Console.WriteLine("Please select an option below: ");
                 System.Console.WriteLine("[0] Manage Inventory \n[2] Exit");
 
                 manInput = System.Console.ReadLine();
                 switch (manInput)
                 {
                     case "0":
-                        // envove manager inventory menu
+                        replenishInventory.Start();
                         break;
                     case "2":
                         System.Console.WriteLine("Thank you, Manager. Goodbye!");

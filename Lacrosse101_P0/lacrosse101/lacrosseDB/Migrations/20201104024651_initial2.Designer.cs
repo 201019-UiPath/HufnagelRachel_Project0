@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using lacrosseDB;
@@ -9,9 +10,10 @@ using lacrosseDB;
 namespace lacrosseDB.Migrations
 {
     [DbContext(typeof(lacrosseContext))]
-    partial class lacrosseContextModelSnapshot : ModelSnapshot
+    [Migration("20201104024651_initial2")]
+    partial class initial2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -109,10 +111,7 @@ namespace lacrosseDB.Migrations
                     b.Property<int>("locationId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("quantityOfBalls")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("quantityOfSticks")
+                    b.Property<int>("quantity")
                         .HasColumnType("integer");
 
                     b.Property<int>("sticksId")
@@ -257,6 +256,10 @@ namespace lacrosseDB.Migrations
                     b.Property<int>("locationId")
                         .HasColumnName("Sticks_locationId")
                         .HasColumnType("integer");
+
+                    b.Property<string>("stickType")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasIndex("locationId");
 

@@ -262,9 +262,9 @@ namespace lacrosseDB.Repos
         /// <param name="firstName"></param>
         /// <param name="lastName"></param>
         /// <returns></returns>
-        public Customer GetCustomerByName(string firstName, string lastName)
+        public Customer GetCustomerByEmail(string email)
         {
-            return (Customer) context.Customer.Where(c => c.FirstName == firstName & c.LastName == lastName);
+            return (Customer)context.Customer.Single(c => c.email == email);
         }
         /// <summary>
         /// A method are for retreving data from the database

@@ -82,16 +82,16 @@ namespace lacrosseDB
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             var StickConverter1 = new EnumToStringConverter<Sticks.BrandType>();
-            var StickConverter2 = new EnumToStringConverter<Sticks.StickType>();
+            //var StickConverter2 = new EnumToStringConverter<Sticks.StickType>();
             var BallConverter = new EnumToStringConverter<Balls.ColorType>();
 
             modelBuilder.Entity<Sticks>() 
             .Property(s => s.brandType)
             .HasConversion(StickConverter1);
 
-            modelBuilder.Entity<Sticks>()
-            .Property(s => s.stickType)
-            .HasConversion(StickConverter2);
+            // modelBuilder.Entity<Sticks>()
+            // .Property(s => s.stickType)
+            // .HasConversion(StickConverter2);
 
             modelBuilder.Entity<Balls>() 
             .Property(b => b.colorType)

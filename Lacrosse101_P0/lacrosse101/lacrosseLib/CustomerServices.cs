@@ -29,9 +29,9 @@ namespace lacrosseLib
             return customer;
         }
 
-        public Customer GetCustomerByName(string firstName, string lastName)
+        public Customer GetCustomerByEmail(string email)
         {
-            Customer customer = custRepo.GetCustomerByName(firstName, lastName);
+            Customer customer = custRepo.GetCustomerByEmail(email);
             return customer;
         }
  

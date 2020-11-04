@@ -16,6 +16,9 @@ namespace lacrosseDB.Models
         /// </summary>
         /// <value></value>
         public float Price {get; set;} 
+
+
+        
         
  
         

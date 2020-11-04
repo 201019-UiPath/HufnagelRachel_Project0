@@ -5,7 +5,7 @@ using lacrosseDB.Models;
 using lacrosseDB.Repos;
 using Xunit;
 
-namespace ICustomerRepoTest
+namespace lacrosseTest
 {
     public class CustomerRepoTest
     {

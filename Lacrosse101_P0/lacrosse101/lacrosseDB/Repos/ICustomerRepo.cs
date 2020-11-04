@@ -8,7 +8,7 @@ namespace lacrosseDB.Repos
         void AddCustomer (Customer customer);
         void UpdateCustomer (Customer customer);
         Customer GetCustomerByCustId (int custId);
-        Customer GetCustomerByName (string firstName, string lastName);
+        Customer GetCustomerByEmail (string email);
         List <Customer> GetAllCustomers();
         void DeleteACustomer (Customer customer);
 

@@ -4,7 +4,7 @@ using lacrosseDB.Models;
 using lacrosseDB.Repos;
 using Xunit;
 
-namespace IManagerRepoTest
+namespace lacrosseTest
 {
     public class ManagerRepoTest
     {
@@ -16,14 +16,13 @@ namespace IManagerRepoTest
             Manager man = new Manager();
             man.FirstName = "manFirst";
             man.LastName = "manLast";
-            man.LocationId = 3;
             manRepo.AddManager(man);
 
-            man.LocationId = 1;
+            man.LastName = "NewLast";
             manRepo.UpdateManager(man);
-            var result = manRepo.GetManagerByLocationId(man.LocationId);
-            Assert.Equal(1, man.LocationId);
-            //manRepo.DeleteManager(man);
+            var result = manRepo.GetManagerByName(man.FirstName, man.LastName);
+            Assert.Equal("NewLast", man.LastName);
+            manRepo.DeleteManager(man);
         }
     }
 }

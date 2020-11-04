@@ -15,7 +15,13 @@ namespace lacrosseDB.Models
         /// Property of the inventory class
         /// </summary>
         /// <value></value>
-        public int quantity { get; set; }
+        public int quantityOfBalls { get; set; }
+
+        /// <summary>
+        /// Property of the inventory class
+        /// </summary>
+        /// <value></value>
+        public int quantityOfSticks { get; set; }
 
         /// <summary>
         /// Property of the inventory class
@@ -46,7 +52,7 @@ namespace lacrosseDB.Models
         /// </summary>
         /// <value></value>
         public int locationId { get; set; }
-        
+
         /// <summary>
         /// Property of the inventory class
         /// </summary>

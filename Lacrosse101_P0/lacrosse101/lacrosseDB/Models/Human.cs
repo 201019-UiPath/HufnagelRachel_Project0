@@ -12,19 +12,25 @@ namespace lacrosseDB.Models
         public int Id { get; set; }
 
         /// <summary>
-        /// Property of the customer class
+        /// Property of the human class
         /// </summary>
         /// <value></value>
         public string FirstName { get; set; }
 
         /// <summary>
-        /// Property of the customer class
+        /// Property of the human class
         /// </summary>
         /// <value></value>
         public string LastName { get; set; }
+
+        /// <summary>
+        /// Property of the human class
+        /// </summary>
+        /// <value></value>
+        public string email {get; set;}
         
         /// <summary>
-        /// Property of the customer class
+        /// Property of the human class
         /// </summary>
         /// <value></value>
         public int LocationId { get; set; }

@@ -15,7 +15,8 @@ namespace lacrosseDB.Models
         /// Property of the sticks class
         /// </summary>
         /// <value></value>
-        public StickType stickType{get; set;} 
+        
+        //public StickType stickType{get; set;} 
 
         /// <summary>
         /// Property of the sticks class
@@ -39,13 +40,13 @@ namespace lacrosseDB.Models
             Adidas,
         }
         
-        /// <summary>
-        /// Enum for a property of stick type for the sticks class
-        /// </summary>
-        public enum StickType {
-            Womens, 
-            Mens,
-        }
+        // /// <summary>
+        // /// Enum for a property of stick type for the sticks class
+        // /// </summary>
+        // public enum StickType {
+        //     Womens, 
+        //     Mens,
+        // }
         
     }
          
