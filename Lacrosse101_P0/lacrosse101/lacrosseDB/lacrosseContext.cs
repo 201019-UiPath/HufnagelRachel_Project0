@@ -16,41 +16,49 @@ namespace lacrosseDB
         /// </summary>
         /// <value></value>
         public DbSet<Customer> Customer {get; set;}
+
         /// <summary>
         /// A table in the database 
         /// </summary>
         /// <value></value>
         public DbSet<Manager> Managers {get; set;} 
+
         /// <summary>
         /// A table in the database 
         /// </summary>
         /// <value></value>
         public DbSet<Balls> Balls {get; set;} 
+
         /// <summary>
         /// A table in the database 
         /// </summary>
         /// <value></value>
         public DbSet<Sticks> Sticks {get; set;}
+
         /// <summary>
         /// A table in the database 
         /// </summary>
         /// <value></value>
         public DbSet<Orders> Orders {get; set;}
+
         /// <summary>
         /// A table in the database 
         /// </summary>
         /// <value></value>
         public DbSet<Locations> Locations {get; set;}
+
         /// <summary>
         /// A table in the database 
         /// </summary>
         /// <value></value>
         public DbSet<Inventory> Inventory {get; set;}
+
         /// <summary>
         /// A table in the database 
         /// </summary>
         /// <value></value>
         public DbSet<Cart> Cart {get; set;}
+        
         /// <summary>
         /// A table in the database 
         /// </summary>

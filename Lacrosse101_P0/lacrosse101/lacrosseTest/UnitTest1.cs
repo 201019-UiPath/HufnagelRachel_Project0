@@ -7,9 +7,8 @@ using Xunit;
 
 namespace lacrosseTest
 {
-    public class TestingArea
+    public class UnitTest1
     {
-
         [Fact]
         public void GetAllCustomerShouldGetAllCustomers() 
         {
@@ -27,6 +26,7 @@ namespace lacrosseTest
             Customer newCust = new Customer();
             newCust.FirstName = "NewCustFirst";
             newCust.LastName = "NewCustLast";
+            newCust.email = "newCust@gmail.com";
             newCust.LocationId = 2;
             newCust.CustAddress = "Arizona";
             
@@ -66,7 +66,9 @@ namespace lacrosseTest
         //     Assert.NotNull(TContext.Balls.Single(b => b.locationId == testerBall.locationId));
         //     repo.DeleteBall(testerBall);
         // }
-        
     }
 }
+
+
+
  
