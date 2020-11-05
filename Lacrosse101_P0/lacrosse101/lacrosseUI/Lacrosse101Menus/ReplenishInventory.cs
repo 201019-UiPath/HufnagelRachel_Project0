@@ -50,16 +50,13 @@ namespace lacrosseUI.Lacrosse101Menus
                     case "0":
                         break;
                     case "2":
-                        ManageInventoryforBalls(1);
-                        ManageInventoryforSticks(1);
+                        ManageInventory(1);
                         break;
                     case "4":
-                        ManageInventoryforBalls(2);
-                        ManageInventoryforSticks(3);
+                        ManageInventory(2);
                         break;
                     case "6":
-                        ManageInventoryforBalls(3);
-                        ManageInventoryforSticks(3);
+                        ManageInventory(3);
                         break;
                     default:
                         ValidInvalidServices.InvalidInput();
@@ -69,28 +66,37 @@ namespace lacrosseUI.Lacrosse101Menus
             } while (true);
         }
 
-        public void ManageInventoryforBalls(int locationId)
+        public void ManageInventory(int locationId)
         {
             string manInput2;
             do
             {
-                Console.WriteLine("Which ball item would you like to update?");
+                Console.WriteLine("Select which item to replenish by selecting the number in [].");
                 List<Inventory> items = inventoryServices.GetAllOfInventoryByLocationId(locationId);
                 foreach (Inventory item in items)
                 {
-                    Balls balls = productServices.GetBallByBallId(item.ballId);
-                    Console.WriteLine($"[{balls.Id}]: Ball Color: {balls.colorType} ${balls.Price} Remaining in inventory: {item.quantityOfBalls}");
+                    Product product = productServices.GetProductByProductId(item.Id);
+                    if (product.ProductType == 0)
+                    {
+                        Console.WriteLine("_____ \tLacrosse Sticks: _____");
+                        Console.WriteLine($" [{product.Id}]:  {product.description}, remaining: {item.quantityOfSticks}");
+                    }
+                    else if (product.ProductType == 1)
+                    {
+                        Console.WriteLine("_____ \tLacrosse Balls: _____");
+                        Console.WriteLine($" [{product.Id}]:  {product.description}, remaining: {item.quantityOfBalls}");
+                    }
                 }
-                manInput2 = Console.ReadLine();
                 Console.WriteLine("[0] Back");
+                manInput2 = Console.ReadLine();
                 switch (manInput2)
                 {
                     case "1":
-                        updateBallStock(1);
+                        updateStock(1);
                         break;
 
                     case "2":
-                        updateBallStock(2);
+                        updateStock(2);
                         break;
 
                     case "0":
@@ -99,69 +105,35 @@ namespace lacrosseUI.Lacrosse101Menus
             } while (!(manInput.Equals("0")));
         }
 
-        public void ManageInventoryforSticks(int locationId)
+        // this needs to be updated
+        public void updateStock(int prodId)
         {
             string manInput2;
-            do
+            Console.WriteLine("Would you like to update the \n[0]lacrosse balls or \n[1]lacrosse sticks?");
+            manInput2 = Console.ReadLine();
+            if (manInput.Equals("0"))
             {
-                Console.WriteLine("Which stick item would you like to update?");
-                List<Inventory> items = inventoryServices.GetAllOfInventoryByLocationId(locationId);
-                Console.WriteLine("[0] Back");
-                foreach (Inventory item in items)
+                Console.WriteLine("How many of lax balls would you like to add?");
+                int quantityToAdd = Int32.Parse(Console.ReadLine());
+                while (quantityToAdd > 0)
                 {
-                    Sticks sticks = productServices.GetStickByStickId(item.sticksId);
-                    Console.WriteLine($"[{sticks.Id}]: Stick Brand: {sticks.brandType} ${sticks.Price} Remaining in inventory: {item.quantityOfSticks}");
+                    Product product = new Balls();
+                    product.Id = prodId;
+                    //inventoryServices.UpdateInventory(product);
+                    quantityToAdd--;
                 }
-                manInput2 = Console.ReadLine();
-                switch (manInput2)
+            } else if (manInput2.Equals("1")) {
+                Console.WriteLine("How many of lacrosse sticks would you like to add?");
+                int quantityToAdd = Int32.Parse(Console.ReadLine());
+                while (quantityToAdd > 0)
                 {
-                    case "0":
-                        break;
-
-                    case "1":
-                        updateStickStock(1);
-                        break;
-
-                    case "2":
-                        updateStickStock(2);
-                        break;
-                    case "3":
-                        updateStickStock(3);
-                        break;
-                    case "4":
-                        updateStickStock(4);
-                        break;
-                    default:
-                        ValidInvalidServices.InvalidInput();
-                        break;
+                    Product product = new Balls();
+                    product.Id = prodId;
+                    //inventoryServices.UpdateInventory(product);
+                    quantityToAdd--;
                 }
-            } while (!(manInput.Equals("0")));
-        }
-
-        public void updateBallStock(int ballsId)
-        {
-            Console.WriteLine("How many of this item would you like to add?");
-            int quantityToAdd = Int32.Parse(Console.ReadLine());
-
-            while (quantityToAdd > 0)
-            {
-                Balls ball = new Balls();
-                ball.Id = ballsId;
-                productServices.AddProduct(ball);
-                quantityToAdd--;
-            }
-        }
-
-        public void updateStickStock(int stickId)
-        {
-            Console.WriteLine("How many of this item would you like to add?");
-            int quantityToAdd = Int32.Parse(Console.ReadLine());
-            while (quantityToAdd > 0)
-            {
-                Sticks stick = new Sticks();
-                stick.Id = stickId;
-                productServices.AddProduct(stick);
-                quantityToAdd--;
+            } else {
+                ValidInvalidServices.InvalidInput();
             }
         }
     }

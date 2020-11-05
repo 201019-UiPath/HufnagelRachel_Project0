@@ -30,9 +30,9 @@ namespace lacrosseLib
             return manager;
         }
 
-        public Manager GetManagerByName(string firstName, string lastName)
+        public Manager GetManagerByEmail(string email)
         {
-            Manager manager = managerRepo.GetManagerByName(firstName, lastName);
+            Manager manager = managerRepo.GetManagerByEmail(email);
             return manager;
         }
 

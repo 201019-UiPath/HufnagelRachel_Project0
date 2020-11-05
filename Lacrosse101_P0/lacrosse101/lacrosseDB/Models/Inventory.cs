@@ -29,10 +29,5 @@ namespace lacrosseDB.Models
         /// <value></value>
         public int locationId { get; set; }
 
-        /// <summary>
-        /// Property of the inventory class
-        /// </summary>
-        /// <value></value>
-        public Locations location { get; set; }
     }
 }

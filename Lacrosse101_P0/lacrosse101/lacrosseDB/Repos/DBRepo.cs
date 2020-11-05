@@ -153,7 +153,7 @@ namespace lacrosseDB.Repos
         /// <returns></returns>
         public List<Inventory> GetAllOfInventoryByLocationId(int locationId)
         {
-            return context.Inventory.Select(i => i).Where(i => i.locationId == locationId).ToList();
+            return context.Inventory.Where(i => i.locationId == locationId).ToList();
         }
         /// <summary>
         /// A method are for retreving data from the database
@@ -234,9 +234,9 @@ namespace lacrosseDB.Repos
         /// <param name="firstName"></param>
         /// <param name="lastName"></param>
         /// <returns></returns>
-        public Manager GetManagerByName(string firstName, string lastName)
+        public Manager GetManagerByEmail(string email)
         {
-            return (Manager)context.Managers.Where(m => m.FirstName == firstName && m.LastName == lastName);
+            return (Manager)context.Managers.Single(m => m.email == email);
         }
         /// <summary>
         /// A method are for retreving data from the database
@@ -484,22 +484,23 @@ namespace lacrosseDB.Repos
 
         public void AddProduct(Product product)
         {
-            throw new NotImplementedException();
+            context.Product.Add(product);
+            context.SaveChanges();
         }
 
         public void DeleteProduct(Product product)
         {
-            throw new NotImplementedException();
+            context.Product.Remove(product);
         }
 
         public Product GetProductByProductType(int ProductType)
         {
-            throw new NotImplementedException();
+            return (Product)context.Product.Single(p => p.ProductType == ProductType);
         }
 
         public Product GetProductByProductId(int Id)
         {
-            throw new NotImplementedException();
+            return (Product)context.Product.Single(p => p.Id == Id);
         }
 
         public void SaveChanges()

@@ -10,7 +10,7 @@ namespace lacrosseUI
         static void Main(string[] args)
         {
             lacrosseContext context = new lacrosseContext();
-            IMenu menu = new LaunchMenu(context, new DBRepo(context), new DBRepo(context), new DBRepo(context));
+            IMenu menu = new LaunchMenu(context, new DBRepo(context), new DBRepo(context), new DBRepo(context), new DBRepo(context));
             menu.Start();
         }
     }

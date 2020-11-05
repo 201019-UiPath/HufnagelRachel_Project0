@@ -22,17 +22,22 @@ namespace lacrosseUI.Lacrosse101Menus
         private LocationServices locationServices;
         private ICartRepo cartRepo;
         private CartServices cartServices;
+        private Manager manager;
+        private IManagerRepo managerRepo;
+        private ManagerServices managerServices;
         private lacrosseContext context;
 
-        public LaunchMenu(lacrosseContext context, ICustomerRepo custRepo, ILocationRepo locRepo, ICartRepo cartRepo)
+        public LaunchMenu(lacrosseContext context, ICustomerRepo custRepo, IManagerRepo managerRepo, ILocationRepo locRepo, ICartRepo cartRepo)
         {
             this.context = context;
             this.custRepo = custRepo;
             this.locRepo = locRepo;
             this.cartRepo = cartRepo;
+            this.managerRepo = managerRepo;
             this.customerServices = new CustomerServices(custRepo);
             this.locationServices = new LocationServices(locRepo);
             this.cartServices = new CartServices(cartRepo);
+            this.managerServices = new ManagerServices(managerRepo);
         }
 
 
@@ -41,8 +46,6 @@ namespace lacrosseUI.Lacrosse101Menus
         /// </summary>
         public void Start()
         {
-            Manager man = new Manager();
-            ManagerLogin manLogin = new ManagerLogin(man, context, new DBRepo(context), new DBRepo(context));
             do
             {
                 Console.WriteLine("Welcome to Lacrosse101, a store for all your lacrosse needs!");
@@ -61,7 +64,7 @@ namespace lacrosseUI.Lacrosse101Menus
                         break;
                     case "2":
                         Console.WriteLine("Welcome Manager!");
-                        manLogin.Start();
+                        Manager man = ManagerValidation();
                         break;
                     case "4":
                         Console.WriteLine("Goodbye!");
@@ -168,6 +171,52 @@ namespace lacrosseUI.Lacrosse101Menus
             } while (keepRunning);
             Console.WriteLine("New Customer Created");
             return cust;
+        }
+
+        public Manager ManagerValidation()
+        {
+            string filepath = "../lacrosseDB/DBFiles/Manager.txt";
+            Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Debug()
+            .WriteTo.File(filepath, rollingInterval: RollingInterval.Day)
+            .CreateLogger();
+
+            List<Manager> print = managerServices.GetAllManagers();
+            Console.WriteLine("Managers:");
+            foreach (Manager m in print)
+            {
+                managerServices.GetManagerByManId(m.Id);
+                Console.Write(m.FirstName);
+            }
+
+            string email;
+            Manager man = new Manager();
+            Console.WriteLine("Enter email");
+            email = Console.ReadLine();
+            try
+            {
+                man = managerServices.GetManagerByEmail(email);
+                if (man.email != email)
+                    throw new System.ArgumentException();
+                else
+                {
+                    manager = man;
+                    Log.Information($"{man.email} has signed in");
+                    ManagerLogin manLogin = new ManagerLogin(man, context, new DBRepo(context), new DBRepo(context));
+                    manLogin.Start();
+                }
+            }
+            catch (ArgumentException)
+            {
+                Log.Information($"Manager {man.email} tried and failed to login.");
+                ValidInvalidServices.InvalidInput();
+            }
+            catch (InvalidOperationException)
+            {
+                Log.Information($"Manager tried to sign into an account the DNE.");
+                ValidInvalidServices.InvalidInput();
+            }
+            return man;
         }
     }
 }

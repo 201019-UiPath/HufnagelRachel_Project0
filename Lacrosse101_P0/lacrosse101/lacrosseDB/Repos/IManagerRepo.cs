@@ -8,7 +8,7 @@ namespace lacrosseDB.Repos
         void AddManager (Manager manager);
         void UpdateManager (Manager manager);
         Manager GetManagerByManId (int manId);
-        Manager GetManagerByName (string firstName, string lastName);
+        Manager GetManagerByEmail(string email);
         Manager GetManagerByLocationId(int locID);
         List <Manager> GetAllManagers();
         void DeleteManager (Manager manager);
