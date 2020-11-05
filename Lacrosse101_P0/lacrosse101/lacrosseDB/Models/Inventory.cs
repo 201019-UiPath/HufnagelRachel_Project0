@@ -27,30 +27,6 @@ namespace lacrosseDB.Models
         /// Property of the inventory class
         /// </summary>
         /// <value></value>
-        public int ballId { get; set; }
-
-        /// <summary>
-        /// Property of the inventory class
-        /// </summary>
-        /// <value></value>
-        public Balls ball { get; set; }
-
-        /// <summary>
-        /// Property of the inventory class
-        /// </summary>
-        /// <value></value>
-        public int sticksId { get; set; }
-
-        /// <summary>
-        /// Property of the inventory class
-        /// </summary>
-        /// <value></value>
-        public Sticks stick { get; set; }
-
-        /// <summary>
-        /// Property of the inventory class
-        /// </summary>
-        /// <value></value>
         public int locationId { get; set; }
 
         /// <summary>

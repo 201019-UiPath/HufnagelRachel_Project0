@@ -12,5 +12,7 @@ namespace lacrosseDB.Repos
         Manager GetManagerByLocationId(int locID);
         List <Manager> GetAllManagers();
         void DeleteManager (Manager manager);
+
+        void SaveChanges();
     }
 } 

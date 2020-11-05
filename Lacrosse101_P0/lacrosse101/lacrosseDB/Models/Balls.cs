@@ -5,37 +5,16 @@ namespace lacrosseDB.Models
     /// </summary>
     public class Balls : Product
     {
-        /// <summary>
-        /// Property of the balls class
-        /// </summary>
-        /// <value></value>
-        public ColorType colorType { get; set; }
-
-        /// <summary>
-        /// Property of the balls class
-        /// </summary>
-        /// <value></value>
-        public int locationId { get; set; }
-
-        /// <summary>
-        /// Property of the balls class
-        /// </summary>
-        /// <value></value>
-        public Locations locations { get; set; }
-
-        /// <summary>
-        /// Property of the balls class
-        /// </summary>
-        /// <value></value>
-        public int quantity { get; set; }
-
-        /// <summary>
-        /// Enum for a property of color for the balls class
-        /// </summary>
-        public enum ColorType
+        public Balls() 
         {
-            Yellow,
-            White,
+            ProductType = 1;
+        }
+
+        public Balls(double Price, string description) 
+        {
+            ProductType = 1;
+            this.Price = Price;
+            this.description = description;
         }
 
     }

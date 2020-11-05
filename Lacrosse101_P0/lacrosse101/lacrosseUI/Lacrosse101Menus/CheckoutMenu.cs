@@ -73,8 +73,7 @@ namespace lacrosseUI.Lacrosse101Menus
             Cart cart = cartServices.GetCartByCustId(customer.Id);
             List<CartItem> items = cartItemServices.GetAllCartItemsByCartId(cart.Id);
             Orders order = new Orders();
-            float totalPriceSticks = 0.0F;
-            float totalPriceBalls = 0.0F;
+            double total = 0;
             order.CustomersId = customer.Id;
             order.LocationId = customer.LocationId;
             DateTime dateOfOrder = order.dateOfOrder = DateTime.Now;
@@ -83,14 +82,13 @@ namespace lacrosseUI.Lacrosse101Menus
             Console.WriteLine("You imaginary order has been placed. You will revieve it never");
             foreach(CartItem item in items)
             {
-                Balls ball = productServices.GetBallByBallId(item.ballId);
-                totalPriceSticks += (ball.Price * item.quantity);
-                Sticks stick = productServices.GetStickByStickId(item.stickId);
-                totalPriceSticks += (stick.Price * item.quantity);
+                Product product = productServices.GetProductByProductId(item.Id);
+                total += (product.Price * item.quantity);
+
             }
-            order.TotalPrice = (totalPriceBalls+totalPriceSticks);
+            order.TotalPrice = total;
             orderServices.UpdateOrder(orderToProcess);
-            Console.WriteLine($"Your total was: {order.TotalPrice}");
+            Console.WriteLine($"Your total was: ${order.TotalPrice}");
         }
     }
 }

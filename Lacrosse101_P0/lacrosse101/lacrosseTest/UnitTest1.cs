@@ -28,7 +28,6 @@ namespace lacrosseTest
             newCust.LastName = "NewCustLast";
             newCust.email = "newCust@gmail.com";
             newCust.LocationId = 2;
-            newCust.CustAddress = "Arizona";
             
             custRepo.AddCustomer(newCust); 
             Assert.NotNull(tester.Customer.Single(c => c.FirstName == newCust.FirstName && c.LastName == newCust.LastName));

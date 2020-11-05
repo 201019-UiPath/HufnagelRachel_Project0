@@ -5,55 +5,18 @@ namespace lacrosseDB.Models
     /// </summary>
     public class Sticks : Product
     {
-        /// <summary>
-        /// Property of the sticks class
-        /// </summary>
-        /// <value></value>
-        public BrandType brandType {get; set;}
+       public Sticks() 
+       {
+           ProductType = 0;
+       }
 
-        /// <summary>
-        /// Property of the sticks class
-        /// </summary>
-        /// <value></value>
-        
-        //public StickType stickType{get; set;} 
+       public Sticks(double Price, string description)
+       {
+           ProductType = 0;
+           this.Price = Price;
+           this.description = description;
+       }
 
-        /// <summary>
-        /// Property of the sticks class
-        /// </summary>
-        /// <value></value>
-        public int locationId {get; set;} 
-
-        /// <summary>
-        /// Property of the sticks class
-        /// </summary>
-        /// <value></value>
-        public Locations location {get; set;}
-
-        /// <summary>
-        /// Property of the sticks class
-        /// </summary>
-        /// <value></value>
-        public int quantity {get; set;}
-
-
-        /// <summary>
-        /// Enum for a property of brand type for the sticks class
-        /// </summary>
-        public enum BrandType {
-            STX,
-            Warrior, 
-            DeBeer,
-            Adidas,
-        }
-        
-        // /// <summary>
-        // /// Enum for a property of stick type for the sticks class
-        // /// </summary>
-        // public enum StickType {
-        //     Womens, 
-        //     Mens,
-        // }
         
     }
          

@@ -147,7 +147,7 @@ namespace lacrosseUI.Lacrosse101Menus
             {
                 Balls ball = new Balls();
                 ball.Id = ballsId;
-                productServices.AddBall(ball);
+                productServices.AddProduct(ball);
                 quantityToAdd--;
             }
         }
@@ -160,7 +160,7 @@ namespace lacrosseUI.Lacrosse101Menus
             {
                 Sticks stick = new Sticks();
                 stick.Id = stickId;
-                productServices.AddStick(stick);
+                productServices.AddProduct(stick);
                 quantityToAdd--;
             }
         }

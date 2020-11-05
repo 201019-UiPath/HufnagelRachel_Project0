@@ -56,10 +56,17 @@ namespace lacrosseUI.Lacrosse101Menus
                 Console.WriteLine("[0] Exit");
                 foreach (Inventory item in items)
                 {
-                    Balls ball = productServices.GetBallByBallId(item.ballId);
-                    Sticks stick = productServices.GetStickByStickId(item.sticksId);
-                    Console.WriteLine($" [{ball.Id}]: {ball.colorType} ${ball.Price}, remaining: {ball.quantity}");
-                    Console.WriteLine($" [{(2 + stick.Id)}]: {stick.brandType} ${stick.Price}, remaining: {stick.quantity}");
+                    Product product = productServices.GetProductByProductId(item.Id);
+                    if (product.ProductType == 0)
+                    {
+                        Console.WriteLine("_____ \tLacrosse Sticks: _____");
+                        Console.WriteLine($" [{product.Id}]:  ${product.Price}, remaining: {item.quantityOfSticks}");
+                    }
+                    else if (product.ProductType == 1)
+                    {
+                        Console.WriteLine("_____ \tLacrosse Balls: _____");
+                        Console.WriteLine($" [{product.Id}]:  ${product.Price}, remaining: {item.quantityOfBalls}");
+                    }
                     custInput = Console.ReadLine();
                     switch (custInput)
                     {
@@ -118,7 +125,7 @@ namespace lacrosseUI.Lacrosse101Menus
                             break;
                     }
                 }
-            } while(!(custInput.Equals("0")));
+            } while (!(custInput.Equals("0")));
         }
     }
 }

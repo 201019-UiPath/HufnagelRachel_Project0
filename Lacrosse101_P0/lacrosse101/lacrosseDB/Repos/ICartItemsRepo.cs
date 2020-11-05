@@ -12,5 +12,7 @@ namespace lacrosseDB.Repos
          CartItem GetCartItemByCustId(int custId);
          List<CartItem> GetAllCartItemsByCartId(int cartId);
          void DeleteCartItem(CartItem cartItem);
+
+         void SaveChanges();
     }
 }

@@ -23,16 +23,6 @@ namespace lacrosseDB.Repos
         {
             this.context = context;
         }
-
-        /// <summary>
-        /// A method are for adding data to the database
-        /// </summary>
-        /// <param name="ball"></param>
-        public void AddBall(Balls ball)
-        {
-            context.Balls.Update(ball);
-            context.SaveChanges();
-        }
         /// <summary>
         /// A method are for adding data to the database
         /// </summary>
@@ -72,30 +62,10 @@ namespace lacrosseDB.Repos
         /// <summary>
         /// A method are for adding data to the database
         /// </summary>
-        /// <param name="stick"></param>
-        public void AddStick(Sticks stick)
-        {
-            context.Sticks.Update(stick);
-            context.SaveChanges();
-        }
-        /// <summary>
-        /// A method are for adding data to the database
-        /// </summary>
         /// <param name="inventory"></param>
         public void AddToInventory(Inventory inventory)
         {
             context.Inventory.Update(inventory);
-            context.SaveChanges();
-        }
-
-
-        /// <summary>
-        /// A method are for deleting data from the database
-        /// </summary>
-        /// <param name="ball"></param>
-        public void DeleteBall(Balls ball)
-        {
-            context.Balls.Remove(ball);
             context.SaveChanges();
         }
         /// <summary>
@@ -137,29 +107,11 @@ namespace lacrosseDB.Repos
         /// <summary>
         /// A method are for deleting data from the database
         /// </summary>
-        /// <param name="stick"></param>
-        public void DeleteStick(Sticks stick)
-        {
-            context.Sticks.Remove(stick);
-            context.SaveChanges();
-        }
-        /// <summary>
-        /// A method are for deleting data from the database
-        /// </summary>
         /// <param name="inventory"></param>
         public void DeleteInventory(Inventory inventory)
         {
             context.Inventory.Remove(inventory);
             context.SaveChanges();
-        }
-
-        /// <summary>
-        /// A method are for retreving data from the database
-        /// </summary>
-        /// <returns></returns>
-        public List<Balls> GetAllBalls()
-        {
-            return context.Balls.Select(b => b).ToList();
         }
         /// <summary>
         /// A method are for retreving data from the database
@@ -220,32 +172,6 @@ namespace lacrosseDB.Repos
         public List<Orders> GetAllOrdersByCustId(int custId)
         {
             return context.Orders.Where(o => o.CustomersId == custId).ToList();
-        }
-        /// <summary>
-        /// A method are for retreving data from the database
-        /// </summary>
-        /// <returns></returns>
-        public List<Sticks> GetAllSticks()
-        {
-            return context.Sticks.Select(s => s).ToList();
-        }
-        /// <summary>
-        /// A method are for retreving data from the database
-        /// </summary>
-        /// <param name="ballId"></param>
-        /// <returns></returns>
-        public Balls GetBallByBallId(int ballId)
-        {
-            return (Balls)context.Balls.Single(b => b.Id == ballId);
-        }
-        /// <summary>
-        /// A method are for retreving data from the database
-        /// </summary>
-        /// <param name="locationId"></param>
-        /// <returns></returns>
-        public List<Balls> GetBallsByLocationId(int locationId)
-        {
-            return context.Balls.Where(b => b.locationId == locationId).ToList();
         }
         /// <summary>
         /// A method are for retreving data from the database
@@ -339,34 +265,7 @@ namespace lacrosseDB.Repos
         {
             return (Orders)context.Orders.Single(o => o.Id == orderId);
         }
-        /// <summary>
-        /// A method are for retreving data from the database
-        /// </summary>
-        /// <param name="locationId"></param>
-        /// <returns></returns>
-        public List<Sticks> GetSticksByLocationId(int locationId)
-        {
-            return context.Sticks.Where(s => s.locationId == locationId).ToList();
-        }
-        /// <summary>
-        /// A method are for retreving data from the database
-        /// </summary>
-        /// <param name="stickId"></param>
-        /// <returns></returns>
-        public Sticks GetStickByStickId(int stickId)
-        {
-            return (Sticks)context.Sticks.Single(s => s.Id == stickId);
-        }
 
-        /// <summary>
-        /// A method are for updating data from the database
-        /// </summary>
-        /// <param name="ball"></param>
-        public void UpdateBall(Balls ball)
-        {
-            context.Balls.Update(ball);
-            context.SaveChanges();
-        }
         /// <summary>
         /// A method are for updating data from the database
         /// </summary>
@@ -410,15 +309,6 @@ namespace lacrosseDB.Repos
         public void UpdateOrder(Orders order)
         {
             context.Orders.Update(order);
-            context.SaveChanges();
-        }
-        /// <summary>
-        /// A method are for updating data from the database
-        /// </summary>
-        /// <param name="stick"></param>
-        public void UpdateStick(Sticks stick)
-        {
-            context.Sticks.Update(stick);
             context.SaveChanges();
         }
         /// <summary>
@@ -590,6 +480,31 @@ namespace lacrosseDB.Repos
         Manager IManagerRepo.GetManagerByLocationId(int locID)
         {
             return (Manager) context.Managers.Single(m => m.LocationId == locID);
+        }
+
+        public void AddProduct(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteProduct(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product GetProductByProductType(int ProductType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product GetProductByProductId(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveChanges()
+        {
+            context.SaveChanges();
         }
     }
 }

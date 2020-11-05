@@ -9,5 +9,7 @@ namespace lacrosseDB.Repos
          Cart GetCartByCartId(int cartId);
          Cart GetCartByCustId(int custId);
          void DeleteCart(Cart cart);
+
+         void SaveChanges();
     }
 }

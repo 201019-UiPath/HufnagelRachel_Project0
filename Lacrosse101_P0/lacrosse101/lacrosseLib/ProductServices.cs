@@ -8,7 +8,6 @@ namespace lacrosseLib
 {
     public class ProductServices
     {
-        // this will include methods for both balls and sticks
         private IProductRepo prodRepo;
 
         public ProductServices(IProductRepo prodRepo)
@@ -16,70 +15,27 @@ namespace lacrosseLib
             this.prodRepo = prodRepo;
         }
 
-        public void AddBall(Balls ball)
+        public void AddProduct(Product product) 
         {
-            prodRepo.AddBall(ball);
+            prodRepo.AddProduct(product);
         }
 
-        public void AddStick(Sticks stick)
+        public void DeleteProduct(Product product) 
         {
-            prodRepo.AddStick(stick);
+            prodRepo.DeleteProduct(product);
         }
 
-        public void UpdateBall(Balls ball)
+        public Product GetProductByProductType(int prodType)
         {
-            prodRepo.UpdateBall(ball);
+            Product product = prodRepo.GetProductByProductType(prodType);
+            return product;
         }
 
-        public void UpdateStick(Sticks stick)
+        public Product GetProductByProductId(int prodId)
         {
-            prodRepo.UpdateStick(stick);
+            Product product = prodRepo.GetProductByProductId(prodId);
+            return product;
         }
 
-        public Balls GetBallByBallId(int ballId)
-        {
-            Balls ball = prodRepo.GetBallByBallId(ballId);
-            return ball;
-        }
-
-        public Sticks GetStickByStickId(int stickId)
-        {
-            Sticks stick = prodRepo.GetStickByStickId(stickId);
-            return stick;
-        }
-
-        public List<Balls> GetAllBalls()
-        {
-            List<Balls> balls = prodRepo.GetAllBalls();
-            return balls;
-        }
-
-        public List<Sticks> GetAllSticks()
-        {
-            List<Sticks> sticks = prodRepo.GetAllSticks();
-            return sticks;
-        }
-
-        public List<Balls> GetBallsByLocationId(int locationId)
-        {
-            List<Balls> balls = prodRepo.GetBallsByLocationId(locationId);
-            return balls;
-        }
-
-        public List<Sticks> GetSticksByLocationId(int locationId)
-        {
-            List<Sticks> sticks = prodRepo.GetSticksByLocationId(locationId);
-            return sticks;
-        }
-
-        public void DeleteBall(Balls ball)
-        {
-            prodRepo.DeleteBall(ball);
-        }
-
-        public void DeleteStick(Sticks stick)
-        {
-            prodRepo.DeleteStick(stick);
-        }
     }
 }

@@ -8,11 +8,6 @@ namespace lacrosseDB.Models
     /// </summary>
     public class Customer : Human 
     {
-        /// <summary>
-        /// Property of the customer class
-        /// </summary> 
-        /// <value></value>
-        public string CustAddress { get; set; }
 
         /// <summary>
         /// Property of the customer class

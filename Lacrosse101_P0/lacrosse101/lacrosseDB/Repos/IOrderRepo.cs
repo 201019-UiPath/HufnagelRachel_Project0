@@ -15,6 +15,8 @@ namespace lacrosseDB.Repos
         List<Orders> GetAllOrdersByLocationId (int locationId);
         void DeleteOrder(Orders order);
 
+        void SaveChanges();
+
         List<Orders> GetAllOrdersByCustIdDateAsc(int custId);
         List<Orders> GettAllOrdersByCustIdDateDesc(int custId);
         List<Orders> GetAllOrdersByCustIdPriceAsc(int custId);

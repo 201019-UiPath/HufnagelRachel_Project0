@@ -27,13 +27,7 @@ namespace lacrosseDB
         /// A table in the database 
         /// </summary>
         /// <value></value>
-        public DbSet<Balls> Balls {get; set;} 
-
-        /// <summary>
-        /// A table in the database 
-        /// </summary>
-        /// <value></value>
-        public DbSet<Sticks> Sticks {get; set;}
+        public DbSet<Product> Product {get; set;}
 
         /// <summary>
         /// A table in the database 
@@ -58,7 +52,7 @@ namespace lacrosseDB
         /// </summary>
         /// <value></value>
         public DbSet<Cart> Cart {get; set;}
-        
+
         /// <summary>
         /// A table in the database 
         /// </summary>
@@ -89,21 +83,21 @@ namespace lacrosseDB
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var StickConverter1 = new EnumToStringConverter<Sticks.BrandType>();
-            //var StickConverter2 = new EnumToStringConverter<Sticks.StickType>();
-            var BallConverter = new EnumToStringConverter<Balls.ColorType>();
+            // var StickConverter1 = new EnumToStringConverter<Sticks.BrandType>();
+            // //var StickConverter2 = new EnumToStringConverter<Sticks.StickType>();
+            // var BallConverter = new EnumToStringConverter<Balls.ColorType>();
 
-            modelBuilder.Entity<Sticks>() 
-            .Property(s => s.brandType)
-            .HasConversion(StickConverter1);
+            // modelBuilder.Entity<Sticks>() 
+            // .Property(s => s.brandType)
+            // .HasConversion(StickConverter1);
 
-            // modelBuilder.Entity<Sticks>()
-            // .Property(s => s.stickType)
-            // .HasConversion(StickConverter2);
+            // // modelBuilder.Entity<Sticks>()
+            // // .Property(s => s.stickType)
+            // // .HasConversion(StickConverter2);
 
-            modelBuilder.Entity<Balls>() 
-            .Property(b => b.colorType)
-            .HasConversion(BallConverter);
+            // modelBuilder.Entity<Balls>() 
+            // .Property(b => b.colorType)
+            // .HasConversion(BallConverter);
         }
     }
 }

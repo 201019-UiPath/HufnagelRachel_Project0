@@ -5,12 +5,14 @@ namespace lacrosseDB.Repos
 {
     public interface IInventoryRepo
     {
-         void AddToInventory (Inventory inventory);
+        void AddToInventory(Inventory inventory);
         void UpdateInventory(Inventory inventory);
         Inventory GetInventoryItemByInventoryId(int intentoryId);
         Inventory GetInventoryItemByLocationId(int locationId);
         List<Inventory> GetAllOfInventoryByInventoryId(int inventoryId);
-        List<Inventory> GetAllOfInventoryByLocationId (int locationId);
+        List<Inventory> GetAllOfInventoryByLocationId(int locationId);
         void DeleteInventory(Inventory inventory);
+
+        void SaveChanges();
     }
 }

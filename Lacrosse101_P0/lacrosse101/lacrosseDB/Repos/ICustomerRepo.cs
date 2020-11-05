@@ -12,5 +12,7 @@ namespace lacrosseDB.Repos
         List <Customer> GetAllCustomers();
         void DeleteACustomer (Customer customer);
 
+        void SaveChanges();
+
     }
 }
