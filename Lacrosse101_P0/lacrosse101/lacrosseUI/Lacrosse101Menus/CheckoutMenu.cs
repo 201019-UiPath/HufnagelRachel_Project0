@@ -39,6 +39,7 @@ namespace lacrosseUI.Lacrosse101Menus
             this.customerServices = new CustomerServices(customerRepo);
             this.locationServices = new LocationServices(locationRepo);
             this.inventoryServices = new InventoryServices(inventoryRepo);
+            this.productServices = new ProductServices(productRepo);
             this.cartServices = new CartServices(cartRepo);
             this.cartItemServices = new CartItemServices(cartItemsRepo);
             this.orderServices = new OrderServices(orderRepo);

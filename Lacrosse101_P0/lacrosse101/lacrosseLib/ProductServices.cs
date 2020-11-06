@@ -37,5 +37,11 @@ namespace lacrosseLib
             return product;
         }
 
+        public List<Product> GetAllProductsByProductType(int prodType)
+        {
+            List<Product> prods = prodRepo.GetAllProductsByProductType(prodType);
+            return prods;
+        }
+
     }
 }

@@ -7,6 +7,7 @@ namespace lacrosseLib
 {
     public class ValidInvalidServices
     {
+        private CustomerServices customerServices;
 
         public static Boolean InvalidQuanityOfItems(int locationQuan, int customerQuan)
         {
@@ -29,29 +30,31 @@ namespace lacrosseLib
             Console.WriteLine("You have entered and invalid email, try again.");
         }
 
-        public static Boolean ValidUniqueEmail(string email, List<Customer> custs)
+        public static Boolean ValidEmail(string email)
         {
             if (Regex.IsMatch(email, @"^[a-z0-9.]+@[a-z0-9]+[\.][a-z]", RegexOptions.IgnoreCase))
             {
-                foreach (Customer cust in custs)
-                {
-                    if (cust.email == email)
-                    {
-                        Console.WriteLine("The email is already being used by another customer, try again.");
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
-                    }
-                }
+                return true;
             }
             else
             {
                 Console.WriteLine("The email address entered is not a vaild email address.");
                 return false;
             }
-            return false;
+        }
+
+        public Boolean IsUniqueEmail(string email, List<Customer> custs)
+        {
+            foreach (Customer cust in custs)
+            {
+                if (cust.email == email)
+                {
+                    Console.WriteLine("The email is already being used by another customer, try again.");
+                    return false;
+                }
+            }
+            return true;
+
         }
     }
 }

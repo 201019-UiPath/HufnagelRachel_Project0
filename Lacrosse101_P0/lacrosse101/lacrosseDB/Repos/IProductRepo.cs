@@ -10,6 +10,8 @@ namespace lacrosseDB.Repos
         Product GetProductByProductType(int ProductType);
         Product GetProductByProductId(int Id);
 
+        List<Product> GetAllProductsByProductType(int ProductType);
+
         // instead of using linq update method 
         void SaveChanges();
     }

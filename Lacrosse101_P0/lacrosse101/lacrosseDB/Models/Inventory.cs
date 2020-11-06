@@ -19,7 +19,7 @@ namespace lacrosseDB.Models
 
         /// <summary>
         /// Property of the inventory class
-        /// </summary>
+        /// </summary> 
         /// <value></value>
         public int quantityOfSticks { get; set; }
 

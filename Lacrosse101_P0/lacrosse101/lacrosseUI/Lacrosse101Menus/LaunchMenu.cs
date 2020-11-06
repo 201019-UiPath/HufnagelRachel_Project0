@@ -14,7 +14,6 @@ namespace lacrosseUI.Lacrosse101Menus
     public class LaunchMenu : IMenu
     {
         private string shoperInput;
-        private CustMenu custMenu;
         private Customer customer;
         private ICustomerRepo custRepo;
         private CustomerServices customerServices;
@@ -25,6 +24,7 @@ namespace lacrosseUI.Lacrosse101Menus
         private Manager manager;
         private IManagerRepo managerRepo;
         private ManagerServices managerServices;
+        private ValidInvalidServices validInvalidServices;
         private lacrosseContext context;
 
         public LaunchMenu(lacrosseContext context, ICustomerRepo custRepo, IManagerRepo managerRepo, ILocationRepo locRepo, ICartRepo cartRepo)
@@ -140,7 +140,7 @@ namespace lacrosseUI.Lacrosse101Menus
                 cust.LastName = Console.ReadLine();
                 Console.WriteLine("Enter email: ");
                 cust.email = Console.ReadLine();
-            } while (ValidInvalidServices.ValidUniqueEmail(cust.email, custs) == false);
+            } while (ValidInvalidServices.ValidEmail(cust.email) == false && validInvalidServices.IsUniqueEmail(cust.email, custs) == false);
             Boolean keepRunning = true;
             do
             {
@@ -186,7 +186,7 @@ namespace lacrosseUI.Lacrosse101Menus
             foreach (Manager m in print)
             {
                 managerServices.GetManagerByManId(m.Id);
-                Console.Write(m.FirstName);
+                Console.WriteLine($"{m.FirstName} ");
             }
 
             string email;

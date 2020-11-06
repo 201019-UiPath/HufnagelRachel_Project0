@@ -153,7 +153,7 @@ namespace lacrosseDB.Repos
         /// <returns></returns>
         public List<Inventory> GetAllOfInventoryByLocationId(int locationId)
         {
-            return context.Inventory.Where(i => i.locationId == locationId).ToList();
+            return context.Inventory.Select(i => i).Where(i => i.locationId == locationId).ToList();
         }
         /// <summary>
         /// A method are for retreving data from the database
@@ -501,6 +501,11 @@ namespace lacrosseDB.Repos
         public Product GetProductByProductId(int Id)
         {
             return (Product)context.Product.Single(p => p.Id == Id);
+        }
+
+        public List<Product> GetAllProductsByProductType(int prodType)
+        {
+            return context.Product.Where(p => p.ProductType == prodType).ToList();
         }
 
         public void SaveChanges()

@@ -11,8 +11,8 @@ namespace lacrosseUI.Lacrosse101Menus
     {
         private string custInput;
         private int quantity;
-        private Sticks sticks;
-        private Balls balls;
+        private Sticks sticks = new Sticks();
+        private Balls balls = new Balls();
         private Customer customer;
         private lacrosseContext context;
         private ICustomerRepo customerRepo;
@@ -48,7 +48,7 @@ namespace lacrosseUI.Lacrosse101Menus
             {
                 int locationId = customer.LocationId;
                 Console.WriteLine("Select from our products below: ");
-                List<Inventory> items = inventoryServices.GetAllOfInventoryByLocationId(locationId);
+                List<Inventory> items = inventoryServices.GetAllOfInventoryByInventoryId(locationId);
                 Console.WriteLine("How many would you like of this item?");
                 quantity = Int32.Parse(Console.ReadLine());
                 CartItem cartItem = new CartItem();

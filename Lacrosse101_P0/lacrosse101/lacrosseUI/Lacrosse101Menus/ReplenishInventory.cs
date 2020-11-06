@@ -11,10 +11,10 @@ namespace lacrosseUI.Lacrosse101Menus
     {
         private string manInput;
         private Manager manager;
-        private Sticks sticks;
-        private Balls balls;
-        private int locationId;
-        private Inventory inventory;
+        // private Sticks sticks;
+        // private Balls balls;
+        //private int locationId;
+        //private Inventory inventory;
         private ProductServices productServices;
         private LocationServices locationServices;
         private InventoryServices inventoryServices;
@@ -71,19 +71,19 @@ namespace lacrosseUI.Lacrosse101Menus
             string manInput2;
             do
             {
-                Console.WriteLine("Select which item to replenish by selecting the number in [].");
+                Console.WriteLine("Select which item to replenish by selecting the number in brackets.");
                 List<Inventory> items = inventoryServices.GetAllOfInventoryByLocationId(locationId);
                 foreach (Inventory item in items)
                 {
                     Product product = productServices.GetProductByProductId(item.Id);
                     if (product.ProductType == 0)
                     {
-                        Console.WriteLine("_____ \tLacrosse Sticks: _____");
+                        Console.WriteLine("_____ Lacrosse Sticks: _____");
                         Console.WriteLine($" [{product.Id}]:  {product.description}, remaining: {item.quantityOfSticks}");
                     }
                     else if (product.ProductType == 1)
                     {
-                        Console.WriteLine("_____ \tLacrosse Balls: _____");
+                        Console.WriteLine("_____ Lacrosse Balls: _____");
                         Console.WriteLine($" [{product.Id}]:  {product.description}, remaining: {item.quantityOfBalls}");
                     }
                 }
@@ -109,7 +109,7 @@ namespace lacrosseUI.Lacrosse101Menus
         public void updateStock(int prodId)
         {
             string manInput2;
-            Console.WriteLine("Would you like to update the \n[0]lacrosse balls or \n[1]lacrosse sticks?");
+            Console.WriteLine("Would you like to update the \n[0] lacrosse balls or \n[1] lacrosse sticks?");
             manInput2 = Console.ReadLine();
             if (manInput.Equals("0"))
             {
@@ -121,6 +121,7 @@ namespace lacrosseUI.Lacrosse101Menus
                     product.Id = prodId;
                     //inventoryServices.UpdateInventory(product);
                     quantityToAdd--;
+                    Console.WriteLine("adding...");
                 }
             } else if (manInput2.Equals("1")) {
                 Console.WriteLine("How many of lacrosse sticks would you like to add?");
@@ -131,6 +132,7 @@ namespace lacrosseUI.Lacrosse101Menus
                     product.Id = prodId;
                     //inventoryServices.UpdateInventory(product);
                     quantityToAdd--;
+                    Console.WriteLine("adding...");
                 }
             } else {
                 ValidInvalidServices.InvalidInput();

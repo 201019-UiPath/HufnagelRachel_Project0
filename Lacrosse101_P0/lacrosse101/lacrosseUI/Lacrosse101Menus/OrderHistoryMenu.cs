@@ -13,7 +13,7 @@ namespace lacrosseUI.Lacrosse101Menus
         private Customer customer;
         private ICustomerRepo customerRepo;
         private CustomerServices customerServices;
-        private IInventoryRepo inventoryItemRepo;
+        private IInventoryRepo inventoryRepo;
         private InventoryServices inventoryService;
         private IProductRepo productRepo;
         private ProductServices productServices;
@@ -28,11 +28,13 @@ namespace lacrosseUI.Lacrosse101Menus
             this.customerRepo = customerRepo;
             this.productRepo = productRepo;
             this.orderRepo = orderRepo;
+            this.inventoryRepo = inventoryRepo;
             this.locationRepo = locationRepo;
             this.customerServices = new CustomerServices(customerRepo);
             this.locationService = new LocationServices(locationRepo);
             this.productServices = new ProductServices(productRepo);
             this.orderService = new OrderServices(orderRepo);
+            this.inventoryService = new InventoryServices(inventoryRepo);
         }
 
         public void Start()
