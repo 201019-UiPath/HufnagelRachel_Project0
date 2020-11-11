@@ -12,52 +12,54 @@ namespace lacrosseDB
     public class lacrosseContext : DbContext
     {
         /// <summary>
-        /// A table in the database 
+        /// A table in the database for customers
         /// </summary>
         /// <value></value>
         public DbSet<Customer> Customer {get; set;}
 
         /// <summary>
-        /// A table in the database 
+        /// A table in the database for managers
         /// </summary>
         /// <value></value>
         public DbSet<Manager> Managers {get; set;} 
 
         /// <summary>
-        /// A table in the database 
+        /// A table in the database for sticks
         /// </summary>
         /// <value></value>
-        public DbSet<Product> Product {get; set;}
+        public DbSet<Sticks> Product {get; set;}
 
         /// <summary>
-        /// A table in the database 
+        /// A table in the database for orders
         /// </summary>
         /// <value></value>
         public DbSet<Orders> Orders {get; set;}
 
         /// <summary>
-        /// A table in the database 
+        /// A table in the database for locations
         /// </summary>
         /// <value></value>
         public DbSet<Locations> Locations {get; set;}
 
         /// <summary>
-        /// A table in the database 
+        /// A table in the database for inventory
         /// </summary>
         /// <value></value>
         public DbSet<Inventory> Inventory {get; set;}
 
         /// <summary>
-        /// A table in the database 
+        /// A table in the database for cart
         /// </summary>
         /// <value></value>
         public DbSet<Cart> Cart {get; set;}
 
         /// <summary>
-        /// A table in the database 
+        /// A table in the database for cartitems
         /// </summary>
         /// <value></value>
         public DbSet<CartItem> CartItem {get; set;}
+
+        public DbSet<lineItem> LineItem {get; set;}
 
         /// <summary>
         /// telling lacrosse context where the database is and then connecting to it 

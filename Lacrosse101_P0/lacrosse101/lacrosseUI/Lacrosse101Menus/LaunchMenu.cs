@@ -50,11 +50,11 @@ namespace lacrosseUI.Lacrosse101Menus
             {
                 Console.WriteLine("Welcome to Lacrosse101, a store for all your lacrosse needs!");
                 Console.WriteLine("Please choose one of the options below by typing the correspoing number.");
-                Console.WriteLine("[0] Returning Shopper Shop Equipment Here \n[1] New Shopper \n[2] Store Manager \n[4] Exit the store");
+                Console.WriteLine("[0] Exit the Store \n[1] New Shopper \n[2] Store Manager \n[3] Returning Shopper Shop Equipment Here");
                 shoperInput = Console.ReadLine();
                 switch (shoperInput)
                 {
-                    case "0":
+                    case "3":
                         Console.WriteLine("Welcome Shopper!");
                         Customer cust = CustomerValidation();
                         break;
@@ -66,13 +66,13 @@ namespace lacrosseUI.Lacrosse101Menus
                         Console.WriteLine("Welcome Manager!");
                         Manager man = ManagerValidation();
                         break;
-                    case "4":
+                    case "0":
                         Console.WriteLine("Goodbye!");
                         // this line will exit the current session 
                         Environment.Exit(0);
                         break;
                     default:
-                        Console.WriteLine("You have entered an Invaid key, please try again");
+                        ValidInvalidServices.InvalidInput();
                         break;
                 }
             } while (!shoperInput.Equals("3"));

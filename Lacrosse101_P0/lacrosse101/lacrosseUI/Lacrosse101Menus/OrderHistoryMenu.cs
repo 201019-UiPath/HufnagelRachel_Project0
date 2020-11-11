@@ -42,23 +42,23 @@ namespace lacrosseUI.Lacrosse101Menus
             do
             {
                 Console.WriteLine("Welcome to your order history, please select one of the options below: ");
-                Console.WriteLine("[0] Go back \n[2] Sort By Date Asc \n[4] Sort By Date Desc \n[6] Sort By Price Asc \n[8] Sort By Price Desc");
+                Console.WriteLine("[0] Go back \n[1] Sort By Date Asc \n[2] Sort By Date Desc \n[3] Sort By Price Asc \n[4] Sort By Price Desc");
 
                 custInput = Console.ReadLine();
                 switch (custInput)
                 {
                     case "0":
                         break;
-                    case "2":
+                    case "1":
                         GetOrdersByDateAsc();
                         break;
-                    case "4":
+                    case "2":
                         GetOrdersByDateDesc();
                         break;
-                    case "6":
+                    case "3":
                         GetOrdersByPriceAsc();
                         break;
-                    case "8":
+                    case "4":
                         GetOrdersByPriceDesc();
                         break;
                     default:
@@ -77,7 +77,7 @@ namespace lacrosseUI.Lacrosse101Menus
             foreach(Orders order in custOrders) 
             {
                 Locations location = locationService.GetLocationByLocationId(order.LocationId);
-                Console.WriteLine($"Date of Order: {order.dateOfOrder} \tTotal: {order.TotalPrice} \tStore Number: {order.LocationId}");
+                Console.WriteLine($"Date of Order: {order.dateOfOrder} \tTotal: ${order.TotalPrice} \tStore Number: {order.LocationId} \n");
             }
         }
 
@@ -88,7 +88,7 @@ namespace lacrosseUI.Lacrosse101Menus
             foreach(Orders order in custOrders) 
             {
                 Locations location = locationService.GetLocationByLocationId(order.LocationId);
-                Console.WriteLine($"Date of Order: {order.dateOfOrder} \tTotal: {order.TotalPrice} \tStore Number: {order.LocationId}");
+                Console.WriteLine($"Date of Order: {order.dateOfOrder} \tTotal: ${order.TotalPrice} \tStore Number: {order.LocationId} \n");
             }
         }
 
@@ -99,7 +99,7 @@ namespace lacrosseUI.Lacrosse101Menus
             foreach(Orders order in custOrders) 
             {
                 Locations location = locationService.GetLocationByLocationId(order.LocationId);
-                Console.WriteLine($"Date of Order: {order.dateOfOrder} \tTotal: {order.TotalPrice} \tStore Number: {order.LocationId}");
+                Console.WriteLine($"Date of Order: {order.dateOfOrder} \tTotal: ${order.TotalPrice} \tStore Number: {order.LocationId} \n");
             }
         }
 
@@ -110,7 +110,7 @@ namespace lacrosseUI.Lacrosse101Menus
             foreach(Orders order in custOrders) 
             {
                 Locations location = locationService.GetLocationByLocationId(order.LocationId);
-                Console.WriteLine($"Date of Order: {order.dateOfOrder} \tTotal: {order.TotalPrice} \tStore Number: {order.LocationId}");
+                Console.WriteLine($"Date of Order: {order.dateOfOrder} \tTotal: ${order.TotalPrice} \tStore Number: {order.LocationId} \n");
             }
         }
     }

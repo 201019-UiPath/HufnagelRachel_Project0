@@ -15,32 +15,21 @@ namespace lacrosseLib
             this.prodRepo = prodRepo;
         }
 
-        public void AddProduct(Product product) 
+        public void AddStick(Sticks stick)
         {
-            prodRepo.AddProduct(product);
+            prodRepo.AddStick(stick);
         }
 
-        public void DeleteProduct(Product product) 
+        public void DeleteStick(Sticks stick)
         {
-            prodRepo.DeleteProduct(product);
+            prodRepo.DeleteStick(stick);
         }
 
-        public Product GetProductByProductType(int prodType)
-        {
-            Product product = prodRepo.GetProductByProductType(prodType);
-            return product;
-        }
 
-        public Product GetProductByProductId(int prodId)
+        public Sticks GetProductByStickId(int stickId)
         {
-            Product product = prodRepo.GetProductByProductId(prodId);
-            return product;
-        }
-
-        public List<Product> GetAllProductsByProductType(int prodType)
-        {
-            List<Product> prods = prodRepo.GetAllProductsByProductType(prodType);
-            return prods;
+            Sticks stick = prodRepo.GetProductByStickId(stickId);
+            return stick;
         }
 
     }

@@ -1,0 +1,4 @@
+2020-11-11 08:12:22.968 -06:00 [INF] skelly@gmail.com has signed in
+2020-11-11 08:17:51.968 -06:00 [INF] skelly@gmail.com has signed in
+2020-11-11 08:40:37.911 -06:00 [INF] skelly@gmail.com has signed in
+2020-11-11 08:40:51.523 -06:00 [INF] Manager tried to sign into an account the DNE.

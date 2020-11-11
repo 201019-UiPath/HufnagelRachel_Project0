@@ -3,21 +3,13 @@ namespace lacrosseDB.Models
     /// <summary>
     /// The class sticks which inherits from the abstract class product
     /// </summary>
-    public class Sticks : Product
+    public class Sticks
     {
-       public Sticks() 
-       {
-           ProductType = 0;
-       }
+        public int Id { get; set; }
+        public double Price { get; set; }
+        public string description { get; set; }
 
-       public Sticks(double Price, string description)
-       {
-           ProductType = 0;
-           this.Price = Price;
-           this.description = description;
-       }
 
-        
     }
-         
+
 }

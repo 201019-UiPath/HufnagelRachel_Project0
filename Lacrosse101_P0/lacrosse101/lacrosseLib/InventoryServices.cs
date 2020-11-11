@@ -35,6 +35,12 @@ namespace lacrosseLib
             return inventory;
         }
 
+        public Inventory GetItemByLocIdStickId(int locId, int stickId)
+        {
+            Inventory inventory = inventRepo.GetInventoryByLocIdStickId(locId, stickId);
+            return inventory;
+        }
+
         public List<Inventory> GetAllOfInventoryByInventoryId(int inventoryId)
         {
             List<Inventory> inventory = inventRepo.GetAllOfInventoryByInventoryId(inventoryId);

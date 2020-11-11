@@ -9,6 +9,7 @@ namespace lacrosseDB.Repos
         void UpdateInventory(Inventory inventory);
         Inventory GetInventoryItemByInventoryId(int intentoryId);
         Inventory GetInventoryItemByLocationId(int locationId);
+        Inventory GetInventoryByLocIdStickId (int locId, int stickId);
         List<Inventory> GetAllOfInventoryByInventoryId(int inventoryId);
         List<Inventory> GetAllOfInventoryByLocationId(int locationId);
         void DeleteInventory(Inventory inventory);

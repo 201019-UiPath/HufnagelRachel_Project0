@@ -18,7 +18,7 @@ namespace lacrosseDB.Models
         /// Property of the orders class
         /// </summary>
         /// <value></value>
-        public List<Product> ItemsToBuy { get; set; }
+        public List<Sticks> ItemsToBuy { get; set; }
 
         /// <summary>
         /// Property of the orders class

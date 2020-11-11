@@ -8,7 +8,7 @@ namespace lacrosseDB.Repos
     /// <summary>
     /// The class which implements all the interfaces for the CRUD operations on the database
     /// </summary>
-    public class DBRepo : IProductRepo, ICustomerRepo, IManagerRepo, ILocationRepo, IInventoryRepo, IOrderRepo, ICartRepo, ICartItemsRepo
+    public class DBRepo : ILineItemRepo, IProductRepo, ICustomerRepo, IManagerRepo, ILocationRepo, IInventoryRepo, IOrderRepo, ICartRepo, ICartItemsRepo
     {
         /// <summary>
         /// A Property of the DBRepo class 
@@ -153,7 +153,8 @@ namespace lacrosseDB.Repos
         /// <returns></returns>
         public List<Inventory> GetAllOfInventoryByLocationId(int locationId)
         {
-            return context.Inventory.Select(i => i).Where(i => i.locationId == locationId).ToList();
+            List<Inventory> inventories = context.Inventory.Where(i => i.LocationId == locationId).ToList();
+            return inventories;
         }
         /// <summary>
         /// A method are for retreving data from the database
@@ -208,7 +209,7 @@ namespace lacrosseDB.Repos
         /// <returns></returns>
         public Inventory GetInventoryItemByLocationId(int locationId)
         {
-            return (Inventory) context.Inventory.Single(i => i.locationId == locationId);
+            return (Inventory) context.Inventory.Single(i => i.LocationId == locationId);
         }
         /// <summary>
         /// A method are for retreving data from the database
@@ -482,35 +483,60 @@ namespace lacrosseDB.Repos
             return (Manager) context.Managers.Single(m => m.LocationId == locID);
         }
 
-        public void AddProduct(Product product)
-        {
-            context.Product.Add(product);
-            context.SaveChanges();
-        }
-
-        public void DeleteProduct(Product product)
-        {
-            context.Product.Remove(product);
-        }
-
-        public Product GetProductByProductType(int ProductType)
-        {
-            return (Product)context.Product.Single(p => p.ProductType == ProductType);
-        }
-
-        public Product GetProductByProductId(int Id)
-        {
-            return (Product)context.Product.Single(p => p.Id == Id);
-        }
-
-        public List<Product> GetAllProductsByProductType(int prodType)
-        {
-            return context.Product.Where(p => p.ProductType == prodType).ToList();
-        }
-
         public void SaveChanges()
         {
             context.SaveChanges();
+        }
+
+        public void AddStick(Sticks stick)
+        {
+            context.Product.Add(stick);
+            context.SaveChanges();
+        }
+
+        public void DeleteStick(Sticks stick)
+        {
+            context.Product.Remove(stick);
+            context.SaveChanges();
+        }
+
+        public Sticks GetProductByStickId(int Id)
+        {
+            return (Sticks) context.Product.Single(s => s.Id == Id);
+        }
+
+        public void AddLineItem(lineItem lineItem)
+        {
+            context.LineItem.Add(lineItem);
+            context.SaveChanges();
+        }
+
+        public void UpdateLineItem(lineItem lineItem)
+        {
+            context.LineItem.Update(lineItem);
+            context.SaveChanges();
+        }
+
+        public lineItem GetLineItemByOrderId(int orderId)
+        {
+            return (lineItem)context.LineItem.Single(li => li.orderId == orderId);
+        }
+
+        public List<lineItem> GetAllLineItemsByOrderId(int orderId)
+        {
+            List<lineItem> lineitems = context.LineItem.Where(li => li.orderId == orderId).ToList();
+            return lineitems;
+        }
+
+        public void DeleteLineItem(lineItem lineItem)
+        {
+            context.LineItem.Remove(lineItem);
+            context.SaveChanges();
+        }
+
+        Inventory IInventoryRepo.GetInventoryByLocIdStickId(int locId, int stickId)
+        {
+            return (Inventory)context.Inventory.Single(i => i.LocationId == locId && i.stickId == stickId);
         }
     }
 }

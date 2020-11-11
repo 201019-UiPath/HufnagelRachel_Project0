@@ -24,18 +24,6 @@ namespace lacrosseDB.Models
         /// Proterty of the cart item class
         /// </summary>
         /// <value></value>
-        public int ballId {get; set;} 
-
-        /// <summary>
-        /// Proterty of the cart item class
-        /// </summary>
-        /// <value></value>
-        public Balls ball {get; set;}
-
-        /// <summary>
-        /// Proterty of the cart item class
-        /// </summary>
-        /// <value></value>
         public int stickId {get; set;}
 
         /// <summary>

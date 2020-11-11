@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace lacrosseDB.Migrations
 {
-    public partial class initial : Migration
+    public partial class inital : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -114,10 +114,8 @@ namespace lacrosseDB.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    ProductType = table.Column<int>(nullable: false),
                     Price = table.Column<double>(nullable: false),
                     description = table.Column<string>(nullable: true),
-                    Discriminator = table.Column<string>(nullable: false),
                     OrdersId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -138,7 +136,6 @@ namespace lacrosseDB.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     cartId = table.Column<int>(nullable: false),
-                    ballId = table.Column<int>(nullable: false),
                     stickId = table.Column<int>(nullable: false),
                     quantity = table.Column<int>(nullable: false),
                     custId = table.Column<int>(nullable: false)
@@ -146,12 +143,6 @@ namespace lacrosseDB.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CartItem", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_CartItem_Product_ballId",
-                        column: x => x.ballId,
-                        principalTable: "Product",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_CartItem_Cart_cartId",
                         column: x => x.cartId,
@@ -172,24 +163,51 @@ namespace lacrosseDB.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    quantityOfBalls = table.Column<int>(nullable: false),
-                    quantityOfSticks = table.Column<int>(nullable: false),
-                    locationId = table.Column<int>(nullable: false),
-                    ProductId = table.Column<int>(nullable: true)
+                    stickId = table.Column<int>(nullable: false),
+                    LocationId = table.Column<int>(nullable: false),
+                    quantity = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Inventory", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Inventory_Product_ProductId",
-                        column: x => x.ProductId,
+                        name: "FK_Inventory_Locations_LocationId",
+                        column: x => x.LocationId,
+                        principalTable: "Locations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Inventory_Product_stickId",
+                        column: x => x.stickId,
                         principalTable: "Product",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LineItem",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    orderId = table.Column<int>(nullable: false),
+                    stickId = table.Column<int>(nullable: false),
+                    price = table.Column<double>(nullable: false),
+                    quantity = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LineItem", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Inventory_Locations_locationId",
-                        column: x => x.locationId,
-                        principalTable: "Locations",
+                        name: "FK_LineItem_Orders_orderId",
+                        column: x => x.orderId,
+                        principalTable: "Orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_LineItem_Product_stickId",
+                        column: x => x.stickId,
+                        principalTable: "Product",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -198,11 +216,6 @@ namespace lacrosseDB.Migrations
                 name: "IX_Cart_customerId",
                 table: "Cart",
                 column: "customerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CartItem_ballId",
-                table: "CartItem",
-                column: "ballId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CartItem_cartId",
@@ -215,14 +228,24 @@ namespace lacrosseDB.Migrations
                 column: "stickId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Inventory_ProductId",
+                name: "IX_Inventory_LocationId",
                 table: "Inventory",
-                column: "ProductId");
+                column: "LocationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Inventory_locationId",
+                name: "IX_Inventory_stickId",
                 table: "Inventory",
-                column: "locationId");
+                column: "stickId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LineItem_orderId",
+                table: "LineItem",
+                column: "orderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LineItem_stickId",
+                table: "LineItem",
+                column: "stickId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Managers_LocationId",
@@ -252,6 +275,9 @@ namespace lacrosseDB.Migrations
 
             migrationBuilder.DropTable(
                 name: "Inventory");
+
+            migrationBuilder.DropTable(
+                name: "LineItem");
 
             migrationBuilder.DropTable(
                 name: "Managers");

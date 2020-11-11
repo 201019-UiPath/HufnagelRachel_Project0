@@ -18,12 +18,6 @@ namespace lacrosseDB.Models
         /// </summary>
         /// <value></value>
         public string StoreLocation { get; set; }
-        
-        /// <summary>
-        /// Property of the locations class
-        /// </summary>
-        /// <value></value>
-        public List<Inventory> inventory { get; set; }
 
     }
 }

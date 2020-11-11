@@ -96,31 +96,13 @@ namespace lacrosseTest
             repo.DeleteACustomer(testUser);
         }
 
-        [Fact]
-        public void GetAllBallsShouldGetAllBalls()
-        {
-            using var test = new lacrosseContext();
-            IProductRepo repo = new DBRepo(test);
-            List<Product> RS = repo.GetAllProductsByProductType(1);
-            Assert.NotNull(RS);
-        }
-
-        [Fact]
-        public void GetAllSticksShouldGetAllSticks()
-        {
-            using var test = new lacrosseContext();
-            IProductRepo repo = new DBRepo(test);
-            List<Product> RS = repo.GetAllProductsByProductType(0);
-            Assert.NotNull(RS);
-        }
-
-        [Fact]
-        public void AddOrderShouldAddOrder()
-        {
-            using var test = new lacrosseContext();
-            IOrderRepo repo = new DBRepo(test);
+        // [Fact]
+        // public void AddOrderShouldAddOrder()
+        // {
+        //     using var test = new lacrosseContext();
+        //     IOrderRepo repo = new DBRepo(test);
             
-        }
+        // }
 
     }
 }

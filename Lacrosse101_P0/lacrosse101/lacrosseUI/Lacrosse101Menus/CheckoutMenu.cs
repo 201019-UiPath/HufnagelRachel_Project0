@@ -25,8 +25,10 @@ namespace lacrosseUI.Lacrosse101Menus
         private CartItemServices cartItemServices;
         private IOrderRepo orderRepo;
         private OrderServices orderServices;
+        private ILineItemRepo lineItemRepo;
+        private lineItemServices lineItemServices;
 
-        public CheckoutMenu(Customer customer, lacrosseContext context, ICustomerRepo customerRepo, ILocationRepo locationRepo, IInventoryRepo inventoryRepo, IProductRepo productRepo, ICartRepo cartRepo, ICartItemsRepo cartItemsRepo, IOrderRepo orderRepo)
+        public CheckoutMenu(Customer customer, lacrosseContext context, ICustomerRepo customerRepo, ILocationRepo locationRepo, IInventoryRepo inventoryRepo, IProductRepo productRepo, ICartRepo cartRepo, ICartItemsRepo cartItemsRepo, IOrderRepo orderRepo, ILineItemRepo lineItemRepo)
         {
             this.customer = customer;
             this.customerRepo = customerRepo;
@@ -36,6 +38,7 @@ namespace lacrosseUI.Lacrosse101Menus
             this.orderRepo = orderRepo;
             this.cartRepo = cartRepo;
             this.cartItemsRepo = cartItemsRepo;
+            this.lineItemRepo = lineItemRepo;
             this.customerServices = new CustomerServices(customerRepo);
             this.locationServices = new LocationServices(locationRepo);
             this.inventoryServices = new InventoryServices(inventoryRepo);
@@ -43,14 +46,23 @@ namespace lacrosseUI.Lacrosse101Menus
             this.cartServices = new CartServices(cartRepo);
             this.cartItemServices = new CartItemServices(cartItemsRepo);
             this.orderServices = new OrderServices(orderRepo);
+            this.lineItemServices = new lineItemServices(lineItemRepo);
         }
 
         public void Start()
         {
             do
             {
+                Cart cart = cartServices.GetCartByCustId(customer.Id);
+                List<CartItem> ci = cartItemServices.GetAllCartItemsByCartId(cart.Id);
+                Console.WriteLine("These are the items in your cart");
+                foreach(CartItem item in ci)
+                {
+                    Sticks stick = productServices.GetProductByStickId(item.stickId);
+                    Console.WriteLine($"{stick.description} \t${stick.Price}");
+                }
                 Console.WriteLine("Welcome to check out! If there is anything you forget go back otherwise proceed to checkout. Thank you for Shopping with us.");
-                Console.WriteLine("[0] Back \n[2]Checkout");
+                Console.WriteLine("[0] Back \n[2] Checkout");
                 custInput = Console.ReadLine();
                 switch(custInput)
                 {
@@ -83,8 +95,8 @@ namespace lacrosseUI.Lacrosse101Menus
             Console.WriteLine("You imaginary order has been placed. You will revieve it never");
             foreach(CartItem item in items)
             {
-                Product product = productServices.GetProductByProductId(item.Id);
-                total += (product.Price * item.quantity);
+                Sticks stick = productServices.GetProductByStickId(item.stickId);
+                total += (stick.Price * item.quantity);
 
             }
             order.TotalPrice = total;
