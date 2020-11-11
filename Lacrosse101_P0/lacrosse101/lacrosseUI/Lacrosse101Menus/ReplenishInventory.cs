@@ -10,10 +10,11 @@ namespace lacrosseUI.Lacrosse101Menus
     public class ReplenishInventory : IMenu
     {
         private string manInput;
+        private string manInput2;
         private Manager manager;
         private int selectedLoc;
         private Sticks sticks;
-        private Inventory inventory;
+        private Inventory Selectedinventory;
         private ProductServices productServices;
         private LocationServices locationServices;
         private InventoryServices inventoryServices;
@@ -43,20 +44,26 @@ namespace lacrosseUI.Lacrosse101Menus
                 Console.WriteLine("[0] Exit \n[1] Location 1 \n[2] Location 2 \n[3] Location 3");
 
                 manInput = Console.ReadLine();
+                selectedLoc = Int32.Parse(manInput);
                 switch (manInput)
                 {
                     case "0":
                         break;
+
                     case "1":
                         ManageInventory(1);
                         break;
+
                     case "2":
                         ManageInventory(2);
                         break;
+
                     case "3":
                         ManageInventory(3);
                         break;
+
                     default:
+                        Console.WriteLine("oops");
                         ValidInvalidServices.InvalidInput();
                         break;
                 }
@@ -72,12 +79,12 @@ namespace lacrosseUI.Lacrosse101Menus
 
         public void ManageInventory(int locationId)
         {
-            string manInput2;
             do
             {
                 Console.WriteLine("Select which item to replenish by selecting the number in brackets.");
                 List<Inventory> items = GetProductsByLocation(locationId);
                 Console.WriteLine("[0] Back");
+
                 foreach (Inventory item in items)
                 {
                     Sticks product = productServices.GetProductByStickId(item.stickId);
@@ -86,6 +93,8 @@ namespace lacrosseUI.Lacrosse101Menus
                 manInput2 = Console.ReadLine();
                 switch (manInput2)
                 {
+                    case "0":
+                        break;
                     case "1":
                         updateStock(1);
                         break;
@@ -95,24 +104,21 @@ namespace lacrosseUI.Lacrosse101Menus
                     case "3":
                         updateStock(3);
                         break;
-                    case "0":
-                        Environment.Exit(0);
-                        break;
-                    default :
+                    default:
+                        Console.WriteLine("oops");
                         ValidInvalidServices.InvalidInput();
                         break;
                 }
-            } while (!(manInput.Equals("0")));
+            } while(!(manInput2.Equals("0")));
         }
 
-        // this needs to be updated
         public void updateStock(int stickId)
         {
-            inventory = inventoryServices.GetItemByLocIdStickId(selectedLoc, stickId);
+            Selectedinventory = inventoryServices.GetItemByLocIdStickId(selectedLoc, stickId);
             Console.WriteLine("How much of this item would you like to add to the inventory?");
             int toAdd = Int32.Parse(Console.ReadLine());
-            inventory.quantity += toAdd;
-            inventoryServices.UpdateInventory(inventory);
+            Selectedinventory.quantity = toAdd + Selectedinventory.quantity;
+            inventoryServices.UpdateInventory(Selectedinventory);
             Console.WriteLine("The stock of this item has been updated!");
         }
     }

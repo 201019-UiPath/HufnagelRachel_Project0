@@ -37,20 +37,20 @@ namespace lacrosseUI.Lacrosse101Menus
             do
             {
                 System.Console.WriteLine("Please select an option below: ");
-                System.Console.WriteLine("[0] Manage Inventory \n[2] Exit");
+                System.Console.WriteLine("[0] Exit \n[1] Manage Inventory");
 
                 manInput = System.Console.ReadLine();
                 switch (manInput)
                 {
-                    case "0":
+                    case "1":
                         replenishInventory.Start();
                         break;
-                    case "2":
-                        System.Console.WriteLine("Thank you, Manager. Goodbye!");
+                    case "0":
+                        System.Console.WriteLine($"Thank you, {manager.FirstName}. Goodbye!");
                         Environment.Exit(0);
                         break;
                 }
-            } while(!(manInput.Equals("2")));
+            } while(!(manInput.Equals("0")));
         }
     }
 }

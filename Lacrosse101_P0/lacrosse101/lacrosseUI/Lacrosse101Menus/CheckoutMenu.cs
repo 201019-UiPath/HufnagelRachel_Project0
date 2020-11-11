@@ -92,16 +92,25 @@ namespace lacrosseUI.Lacrosse101Menus
             DateTime dateOfOrder = order.dateOfOrder = DateTime.Now;
             orderServices.AddOrder(order);
             Orders orderToProcess = orderServices.GetOrderByDate(dateOfOrder);
-            Console.WriteLine("You imaginary order has been placed. You will revieve it never");
+            Console.WriteLine("You imaginary order has been placed. You will revieve it never. \n");
             foreach(CartItem item in items)
             {
+                lineItem lineItem = new lineItem();
                 Sticks stick = productServices.GetProductByStickId(item.stickId);
+                lineItem.orderId = orderToProcess.Id;
+                lineItem.stickId = item.stickId;
+                lineItem.price = stick.Price;
+                lineItem.quantity = item.quantity;
                 total += (stick.Price * item.quantity);
+                lineItemServices.AddLineItem(lineItem);
+                cartItemServices.DeleteCartItem(item);
+                Inventory inventory = inventoryServices.GetItemByLocIdStickId(customer.LocationId, stick.Id);
+                inventory.quantity -= item.quantity;
 
             }
             order.TotalPrice = total;
             orderServices.UpdateOrder(orderToProcess);
-            Console.WriteLine($"Your total was: ${order.TotalPrice}");
+            Console.WriteLine($"\nYour total was: ${order.TotalPrice}");
         }
     }
 }
